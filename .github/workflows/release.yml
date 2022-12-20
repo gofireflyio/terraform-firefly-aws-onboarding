@@ -14,7 +14,7 @@ on:
 jobs:
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, production]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -22,8 +22,13 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
 
+      - name: setup node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Release
         uses: cycjimmy/semantic-release-action@v2
+        id: semantic
         with:
           semantic_version: 18.0.0
           extra_plugins: |
@@ -32,3 +37,26 @@ jobs:
             conventional-changelog-conventionalcommits@4.6.3
         env:
           GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
+          
+      - name: Set env current release
+        run: echo "RELEASE_VERSION=${{ steps.semantic.outputs.last_release_version }}" >> $GITHUB_ENV
+      - name: Set env new release if exist
+        if: steps.semantic.outputs.new_release_published == 'true'
+        run: echo "RELEASE_VERSION=${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_ENV
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+      - name: Save release in mongo
+        run: |
+          python -m venv test
+          source ./test/bin/activate
+          pip install -r requirements.txt
+          export PYTHONPATH="${PYTHONPATH}:${PWD}"
+          python post_release.py
+          deactivate
+        env:
+          PROD_MONGO_URI: ${{ secrets.PROD_MONGO_URI }}
+          STAG_MONGO_URI: ${{ secrets.STAG_MONGO_URI }}
+          TAG: ${{ env.RELEASE_VERSION }}
+

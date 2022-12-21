@@ -95,15 +95,8 @@ variable "iac_events_sns" {
 
 variable "use_config_service" {
   type        = bool
+  default     = true
   description = "Allow Firefly to read the config service s3 objects"
-  default     = false
-}
-
-
-variable "config_service_regions" {
-  type        = list(string)
-  description = "The list of regions to install firefly event driven in"
-  default     = []
 }
 
 variable "enable_evntbridge_permissions" {

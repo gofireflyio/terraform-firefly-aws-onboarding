@@ -57,6 +57,5 @@ jobs:
           deactivate
         env:
           PROD_MONGO_URI: ${{ secrets.PROD_MONGO_URI }}
-          STAG_MONGO_URI: ${{ secrets.STAG_MONGO_URI }}
           TAG: ${{ env.RELEASE_VERSION }}
 

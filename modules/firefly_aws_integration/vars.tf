@@ -60,3 +60,12 @@ variable "use_config_service" {
   default = true
   description = "Allow Firefly to read the config service s3 objects"
 }
+
+variable "event_driven_regions" {
+  type = list(string)
+}
+
+variable "terraform_create_rules" {
+  type = bool
+  default = false
+}

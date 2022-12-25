@@ -39,6 +39,8 @@ resource "terracurl_request" "firefly_aws_integration_request" {
       "fullScanEnabled"= var.full_scan_enabled,
       "isProd"= var.is_prod
       "isEventDriven" = var.event_driven
+      "eventDrivenRegions" = var.event_driven_regions
+      "shouldRunWorkflow" = !var.terraform_create_rules
     }
   )
 

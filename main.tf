@@ -457,9 +457,9 @@ module "firefly_eventbridge_permissions" {
 }
 
 // create eventbridge rules using workflow for exist integration
-module "run_workflow_exist_integration" {
+module "run_workflow" {
   count = var.is_event_driven && !var.terraform_create_rules && var.exist_integration ? 1 : 0
-  source = "modules/run_workflow_exist_integration"
+  source = "./modules/run_workflow"
   firefly_secret_key = var.firefly_secret_key
   firefly_access_key = var.firefly_access_key
   name = var.name

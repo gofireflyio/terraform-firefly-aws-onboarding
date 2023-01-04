@@ -80,6 +80,14 @@ In order to install event-driven for an existing firefly integration just call t
 exist_integration = true
 ```
 
+### Add Config Service to Existing Integration
+In order to install config service feature for an existing firefly integration just call the module with:
+```
+exist_integration = true
+config_service_regions = ["us-east-1", "us-east-1", ...]
+```
+
+
 ### Remove Event Driven from Existing Integration
 In order to remove event-driven for an existing integration just call the module with:
 ```

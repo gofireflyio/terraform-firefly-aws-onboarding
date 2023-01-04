@@ -438,6 +438,7 @@ module "firefly_aws_integration" {
   firefly_deny_list_policy_name = var.firefly_deny_list_policy_name
   terraform_create_rules = var.terraform_create_rules
   event_driven_regions = var.event_driven_regions
+  config_service_regions = var.config_service_regions
   providers          = {
     aws = aws.us_east_1
   }
@@ -469,6 +470,21 @@ module "run_workflow" {
   depends_on = [
     module.firefly_aws_integration,
     module.firefly_eventbridge_permissions
+  ]
+}
+
+// create config service recorders using workflow for exist integration
+module "run_config_service_workflow" {
+  count = var.exist_integration && length(var.config_service_regions) > 0 ? 1 : 0
+  source = "./modules/run_config_service_workflow"
+  firefly_secret_key = var.firefly_secret_key
+  firefly_access_key = var.firefly_access_key
+  name = var.name
+  firefly_endpoint = var.firefly_endpoint
+  config_service_regions = var.config_service_regions
+  depends_on = [
+    module.firefly_aws_integration,
+    module.config_service_setup
   ]
 }
 
@@ -933,7 +949,7 @@ module "iac_events_us_west_2" {
 
 module "config_service_setup" {
   depends_on = [module.firefly_aws_integration]
-  count = var.use_config_service ? 1 : 0
+  count = var.use_config_service || length(var.config_service_regions) > 0 ? 1 : 0
   source = "./modules/config_service_setup"
   firefly_deny_policy_name = var.firefly_deny_list_policy_name
   providers = {

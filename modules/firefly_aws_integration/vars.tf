@@ -69,3 +69,9 @@ variable "terraform_create_rules" {
   type = bool
   default = false
 }
+
+variable "config_service_regions" {
+  type        = list(string)
+  description = "The list of regions to install config service in"
+  default     = []
+}

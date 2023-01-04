@@ -1,4 +1,3 @@
-
 data "terracurl_request" "firefly_login" {
   name           = "firefly_aws_integration"
   url            = "${var.firefly_endpoint}/account/access_keys/login"
@@ -20,28 +19,21 @@ output "response_code" {
 
 resource "time_sleep" "wait_10_seconds" {
   depends_on = [
-    aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_permission,
-    aws_iam_role.firefly_cross_account_access_role
+    data.terracurl_request.firefly_login
   ]
 
   create_duration = "10s"
 }
 
-resource "terracurl_request" "firefly_aws_integration_request" {
-  name           = "firefly aws provider integration"
-  url            = "${var.firefly_endpoint}/integrations/aws/"
+resource "terracurl_request" "firefly_run_config_service_workflow_request" {
+  count = length(var.config_service_regions) > 0 ? 1 : 0
+  name           = "firefly run workflow on aws provider integration"
+  url            = "${var.firefly_endpoint}/integrations/aws/runConfigServiceWorkflow"
   method         = "POST"
   request_body   = jsonencode(
     {
-      "name"= var.name,
-      "roleArn"= aws_iam_role.firefly_cross_account_access_role.arn,
-      "externalId"= var.role_external_id,
-      "fullScanEnabled"= var.full_scan_enabled,
-      "isProd"= var.is_prod
-      "isEventDriven" = var.event_driven
-      "eventDrivenRegions" = var.event_driven_regions
-      "shouldRunWorkflow" = !var.terraform_create_rules
-      "configServiceRegions" = var.config_service_regions
+      "name"= var.name
+      "configServiceRegions": var.config_service_regions
     }
   )
 
@@ -50,12 +42,12 @@ resource "terracurl_request" "firefly_aws_integration_request" {
     Authorization: "Bearer ${jsondecode(data.terracurl_request.firefly_login.response).access_token}"
   }
 
-   lifecycle {
-      ignore_changes = [
-        headers,
-        destroy_headers,
-        request_body
-      ]
+  lifecycle {
+    ignore_changes = [
+      headers,
+      destroy_headers,
+      request_body
+    ]
   }
   response_codes = [200, 409]
 
@@ -66,8 +58,7 @@ resource "terracurl_request" "firefly_aws_integration_request" {
 
   destroy_request_body =  ""
   destroy_response_codes = [200]
-   depends_on = [
-    aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_permission,
-    aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds
+  depends_on = [
+    time_sleep.wait_10_seconds
   ]
 }

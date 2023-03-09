@@ -18,7 +18,7 @@ variable "service_regions"{
   type = list(string)
 }
 
-variable "eventbridge_role_arn"{
+variable "invoke_firefly_role_arn"{
   type = string
 }
 

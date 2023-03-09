@@ -14,7 +14,7 @@ variable "target_event_bus_arn"{
   type = string
 }
 
-variable "eventbridge_role_arn"{
+variable "invoke_firefly_role_arn"{
   type = string
 }
 

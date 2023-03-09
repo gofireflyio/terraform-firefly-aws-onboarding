@@ -1,4 +1,4 @@
-variable "target_event_bus_arn"{
+variable "invoke_firefly_role_arn"{
   type = string
 }
 

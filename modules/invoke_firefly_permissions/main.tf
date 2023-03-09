@@ -1,6 +1,6 @@
 // this role is dedicated for events service
 resource "aws_iam_role" "invoke_firefly_event_bus" {
-  name               = "invoke-firefly-remote-event-bus"
+  name               = "${var.resource_prefix}invoke-firefly-remote-event-bus"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -15,10 +15,11 @@ resource "aws_iam_role" "invoke_firefly_event_bus" {
   ]
 }
 EOF
+  tags = var.tags
 }
 
 resource "aws_iam_policy" "invoke_firefly_event_bus" {
-  name   = "invoke-firefly-remote-event-bus"
+  name   = "${var.resource_prefix}invoke-firefly-remote-event-bus"
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
@@ -31,6 +32,7 @@ resource "aws_iam_policy" "invoke_firefly_event_bus" {
         }
     ]
   })
+  tags = var.tags
 }
 
 resource "aws_iam_role_policy_attachment" "invoke_firefly_event_bus" {

@@ -461,13 +461,14 @@ module "invoke_firefly_permissions" {
   count = var.is_event_driven ? 1 : 0
   source = "./modules/invoke_firefly_permissions"
   target_event_bus_arn = var.target_event_bus_arn
-  firefly_role_name = var.firefly_role_name
   depends_on = [
     module.firefly_aws_integration
   ]
   providers          = {
     aws = aws.us_east_1
   }
+  tags = var.tags
+  resource_prefix = var.resource_prefix
 }
 
 module "firefly_eventbridge_permissions" {

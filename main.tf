@@ -474,7 +474,6 @@ module "invoke_firefly_permissions" {
 module "firefly_eventbridge_permissions" {
   count = var.enable_evntbridge_permissions ? 1 : 0
   source = "./modules/eventbridge_permissions"
-  invoke_firefly_role_arn = module.invoke_firefly_permissions[0].invoke_firefly_role_arn
   firefly_role_name = local.firefly_role_name
   depends_on = [
     module.firefly_aws_integration,

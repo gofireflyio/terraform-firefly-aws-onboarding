@@ -24,7 +24,7 @@ resource "aws_iam_policy" "firefly_eventbridge_permission" {
             "Action": [
               "iam:PassRole"
             ],
-            "Resource": var.invoke_firefly_role_arn,
+            "Resource": "arn:aws:iam::${local.account_id}:role/${var.resource_prefix}invoke-firefly-remote-event-bus"
             "Condition": {
                   "StringEquals": {"iam:PassedToService": "events.amazonaws.com"}
               }

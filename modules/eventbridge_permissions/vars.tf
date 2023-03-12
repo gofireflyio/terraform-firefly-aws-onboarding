@@ -1,7 +1,3 @@
-variable "invoke_firefly_role_arn"{
-  type = string
-}
-
 variable "firefly_role_name"{
   type = string
 }

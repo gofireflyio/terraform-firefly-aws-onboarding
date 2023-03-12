@@ -1,4 +1,4 @@
-# Firefly AWS ReadOnly Integration 
+# Firefly AWS ReadOnly Integration
 # ![Firefly Logo](firefly.gif)
 
 ## Module contents

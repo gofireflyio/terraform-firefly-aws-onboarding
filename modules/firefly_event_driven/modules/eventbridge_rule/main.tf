@@ -8,7 +8,8 @@ module "rule" {
   event_pattarn = jsonencode({
     "source" : ["aws.${var.service}"],
     "detail" : {
-      "eventName" : var.rules
+      "eventName" : var.rules,
+      "readOnly" : [false]
     }
   })
   tags = var.tags

@@ -7,7 +7,7 @@ Firefly terraform module to integrate your aws environment to firefly.
 
 ### Prerequisites
 
-- AWS CLI installed (version)
+- AWS CLI installed (version).
 - The aws role running it should have permissions creation of roles in iam.
 
 ```shell script

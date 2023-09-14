@@ -28,7 +28,7 @@ variable "firefly_secret_key" {
 
 variable "should_autodiscover_disabled" {
   type        = bool
-  description = "If this set to true S3 scan for terraform state files won't run on your integration"
+  description = "Whether to create the integration with IaC auto discover (searches for state files in S3 buckets)"
   default     = false
 }
 

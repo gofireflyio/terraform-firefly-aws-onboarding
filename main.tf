@@ -455,7 +455,7 @@ module "firefly_aws_integration" {
     aws = aws.us_east_1
   }
   resource_prefix = var.resource_prefix
-  should_autodiscover_disabled = var.should_autodiscover_disabled
+  should_autodiscover_disabled = !var.enable_iac_auto_discover
 }
 
 module "invoke_firefly_permissions" {

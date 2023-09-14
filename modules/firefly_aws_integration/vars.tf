@@ -78,6 +78,12 @@ variable "terraform_create_rules" {
   default = false
 }
 
+variable "should_autodiscover_disabled" {
+  type        = bool
+  description = "If this set to true S3 scan for terraform state files won't run on your integration"
+  default     = false
+}
+
 variable "tags" {
   type = map
   default = {}

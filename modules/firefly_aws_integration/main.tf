@@ -21,6 +21,7 @@ resource "terracurl_request" "firefly_aws_integration_request" {
       "isEventDriven" = var.event_driven
       "eventDrivenRegions" = var.event_driven_regions
       "shouldRunWorkflow" = !var.terraform_create_rules
+      "isIacAutoDiscoverDisabled" =  var.should_autodiscover_disabled
     }
   )
 

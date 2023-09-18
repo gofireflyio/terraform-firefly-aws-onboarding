@@ -94,6 +94,12 @@ In order to install event-driven for an existing firefly integration just call t
 exist_integration = true
 ```
 
+### Control Over IAC Auto Discover
+In order to be able to control whether to create the integration with IaC auto discover. `True` by default.
+```
+enable_iac_auto_discover = true
+```
+
 ### Remove Event Driven from Existing Integration
 In order to remove event-driven for an existing integration just call the module with:
 ```

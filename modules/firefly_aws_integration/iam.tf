@@ -155,11 +155,10 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
 
 locals {
   allowed_buckets = length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
-  s3_objects         = [
+  s3_objects         = concat([
     "arn:aws:s3:::elasticbeanstalk*/*",
     "arn:aws:s3:::aws-emr-resources*/*",
-    allowed_buckets[*],
-  ]
+  ], local.allowed_buckets)
   config_service_objects = ["arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"]
   s3_objects_to_allow = var.use_config_service ?  concat(local.s3_objects, local.config_service_objects) : local.s3_objects
 }

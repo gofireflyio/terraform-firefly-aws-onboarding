@@ -456,6 +456,7 @@ module "firefly_aws_integration" {
   }
   resource_prefix = var.resource_prefix
   should_autodiscover_disabled = !var.enable_iac_auto_discover
+  allowed_s3_iac_buckets = var.allowed_s3_iac_buckets
 }
 
 module "invoke_firefly_permissions" {

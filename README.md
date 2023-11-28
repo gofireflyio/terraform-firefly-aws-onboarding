@@ -100,6 +100,12 @@ In order to be able to control whether to create the integration with IaC auto d
 enable_iac_auto_discover = true
 ```
 
+### Control Over S3 Buckets To Read tfstate Files From
+By default all S3 buckets are scanned for tfstate files. To limit the scope to a closed list set the list set:
+```
+allowed_s3_iac_buckets = ["bucket1", "bucket2", "bucket3"]
+```
+
 ### Remove Event Driven from Existing Integration
 In order to remove event-driven for an existing integration just call the module with:
 ```

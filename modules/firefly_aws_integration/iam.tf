@@ -180,6 +180,14 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
       },
       {
         "Action" : [
+          "s3:ListObjects",
+          "s3:ListObjectsV2",
+        ],
+        "Effect" : "Deny",
+        "NotResource" : local.s3_objects_to_allow
+      },
+      {
+        "Action" : [
           "s3:GetObject"
         ],
         "Effect" : "Deny",

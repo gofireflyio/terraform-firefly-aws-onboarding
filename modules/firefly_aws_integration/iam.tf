@@ -154,13 +154,39 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
 }
 
 locals {
-  allowed_buckets = length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
-  s3_objects         = concat([
+  allowed_objects = length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
+  aws_managed_buckets = [    
     "arn:aws:s3:::elasticbeanstalk*/*",
-    "arn:aws:s3:::aws-emr-resources*/*",
-  ], local.allowed_buckets)
+    "arn:aws:s3:::aws-emr-resources*/*"
+  ]
+  s3_objects = concat(local.aws_managed_buckets, local.allowed_objects)
+  allowed_list_objects = concat(
+    length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}"] : [],
+    local.aws_managed_buckets
+  )
   config_service_objects = ["arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"]
   s3_objects_to_allow = var.use_config_service ?  concat(local.s3_objects, local.config_service_objects) : local.s3_objects
+}
+
+resource "aws_iam_policy" "explicit_deny_s3_object_list" {
+  count = length(var.allowed_s3_iac_buckets) > 0 ? 1 : 0
+  name        = "${var.resource_prefix}ExplicitDenyS3ObjectList"
+  path        = "/"
+  description = "Deny list for S3 objects"
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Action" : [
+          "s3:ListBucket"
+        ],
+        "Effect" : "Deny",
+        "NotResource" : local.allowed_list_objects
+      }
+    ]
+  })
+  tags = var.tags
 }
 
 resource "aws_iam_policy" "firefly_s3_specific_permission" {
@@ -177,14 +203,6 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
         ],
         "Effect" : "Allow",
         "Resource" : "arn:aws:kms:*:${local.account_id}:key/*"
-      },
-      {
-        "Action" : [
-          "s3:ListObjects",
-          "s3:ListObjectsV2",
-        ],
-        "Effect" : "Deny",
-        "NotResource" : local.s3_objects_to_allow
       },
       {
         "Action" : [
@@ -277,4 +295,12 @@ resource "aws_iam_role_policy_attachment" "firefly_additional_fetching_permissio
   policy_arn = aws_iam_policy.firefly_additional_fetching_permission.arn
   # attach policies serialy
   depends_on = [ aws_iam_role_policy_attachment.firefly_security_audit ]
+}
+
+resource "aws_iam_role_policy_attachment" "firefly_explicit_deny_s3_object_list" {
+  count = length(var.allowed_s3_iac_buckets) > 0 ? 1 : 0
+  role       = aws_iam_role.firefly_cross_account_access_role.name
+  policy_arn = aws_iam_policy.explicit_deny_s3_object_list[count.index].arn
+  # attach policies serialy
+  depends_on = [ aws_iam_role_policy_attachment.firefly_additional_fetching_permission ]
 }

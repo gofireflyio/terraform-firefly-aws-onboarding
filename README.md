@@ -101,7 +101,7 @@ enable_iac_auto_discover = true
 ```
 
 ### Control Over S3 Buckets To Read tfstate Files From
-By default all S3 buckets are scanned for tfstate files. To limit the scope to a closed list set the list set:
+By default all S3 buckets are scanned for tfstate files. To limit the scope to a closed list of s3 buckets:
 ```
 allowed_s3_iac_buckets = ["bucket1", "bucket2", "bucket3"]
 ```

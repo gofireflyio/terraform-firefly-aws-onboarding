@@ -37,7 +37,7 @@ resource "terracurl_request" "firefly_aws_integration_request" {
         request_body
       ]
   }
-  response_codes = [200, 409]
+  response_codes = [200, 409, 401]
 
   destroy_url    = "https://www.google.com"
   destroy_method = "GET"

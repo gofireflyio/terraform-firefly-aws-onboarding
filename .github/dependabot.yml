@@ -1,0 +1,17 @@
+
+version: 2
+updates:
+  - package-ecosystem: "terraform"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "dependabot[bot]"
+    allow:
+        - dependency-name: "aws"
+    ignore:
+      - dependency-name: "aws"
+        update-types: ["version-update:semver-patch"]
+    commit-message:
+      prefix: "feat"

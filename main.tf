@@ -10,7 +10,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -18,7 +18,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -34,7 +34,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -42,7 +42,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -59,7 +59,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -67,7 +67,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -84,7 +84,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -92,7 +92,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -109,7 +109,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -117,7 +117,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -134,7 +134,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -142,7 +142,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -159,7 +159,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -167,7 +167,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -184,7 +184,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -192,7 +192,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -209,7 +209,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -217,7 +217,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -234,7 +234,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -242,7 +242,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -259,7 +259,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -267,7 +267,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -284,7 +284,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -292,7 +292,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -309,7 +309,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -317,7 +317,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -334,7 +334,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -342,7 +342,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -359,7 +359,7 @@ provider "aws" {
    access_key = var.access_key
    secret_key = var.secret_key
    dynamic assume_role {
-     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
      content {
        role_arn     = var.aws_assume_role_arn
        session_name = var.session_name
@@ -367,7 +367,7 @@ provider "aws" {
      }
    }
    dynamic assume_role_with_web_identity {
-     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
      content {
        role_arn                = var.aws_assume_web_identity_role_arn
        web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -384,7 +384,7 @@ provider "aws" {
    access_key = var.access_key
    secret_key = var.secret_key
    dynamic assume_role {
-     for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
      content {
        role_arn     = var.aws_assume_role_arn
        session_name = var.session_name
@@ -392,7 +392,7 @@ provider "aws" {
      }
    }
    dynamic assume_role_with_web_identity {
-     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+     for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
      content {
        role_arn                = var.aws_assume_web_identity_role_arn
        web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token
@@ -409,7 +409,7 @@ provider "aws" {
   access_key = var.access_key
   secret_key = var.secret_key
   dynamic assume_role {
-    for_each = var.aws_assume_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn     = var.aws_assume_role_arn
       session_name = var.session_name
@@ -417,7 +417,7 @@ provider "aws" {
     }
   }
   dynamic assume_role_with_web_identity {
-    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([0]) : toset([1])
+    for_each = var.aws_assume_web_identity_role_arn == "" ? toset([]) : toset([0])
     content {
       role_arn                = var.aws_assume_web_identity_role_arn
       web_identity_token      = var.aws_assume_web_identity_role_token == "" ? null : var.aws_assume_web_identity_role_token

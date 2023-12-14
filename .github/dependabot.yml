@@ -9,9 +9,9 @@ updates:
     reviewers:
       - "dependabot[bot]"
     allow:
-        - dependency-name: "aws"
+        - dependency-name: "hashicorp/aws"
     ignore:
-      - dependency-name: "aws"
+      - dependency-name: "hashicorp/aws"
         update-types: ["version-update:semver-patch"]
     commit-message:
       prefix: "feat"

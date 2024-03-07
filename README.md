@@ -37,6 +37,22 @@ module "firefly-read-only" {
 }
 ```
 
+### Upgrading to from v1.y.z to v2.y.z
+Use of `devops-rob/terracurl` provider is removed in favour of official `hashicorp/http`
+Prior to upgrading it is reuqired to remove the deprecated resources from the state eg:
+```
+terraform state list | grep terracurl_request
+
+module.firefly.module.firefly_aws_integration[0].terracurl_request.firefly_aws_integration_request
+```
+```
+terraform state rm "module.firefly.module.firefly_aws_integration[0].terracurl_request.firefly_aws_integration_request"
+
+Removed module.firefly.module.firefly_aws_integration[0].terracurl_request.firefly_aws_integration_request
+Successfully removed 1 resource instance(s).
+```
+
+
 ### Installation with Event Driven
 
 ```hcl-terraform

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v1.21.0...v2.0.0) (2024-03-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Replace terracurl with official hashicorp http
+
+* Infl 8529 use official hashicorp http provider instead of devops rod terracurl (#48) ([270074e](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/270074edb3d0d47058a3eb0e0565f0ac71c8c3d8)), closes [#48](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/issues/48)
+
 ## [1.20.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v1.19.0...v1.20.0) (2024-01-16)
 
 

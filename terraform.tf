@@ -5,9 +5,9 @@ terraform {
       version = ">= 4.12.1, <= 5.38.0"
     }
 
-    terracurl = {
-      version = "0.1.0"
-      source= "devops-rob/terracurl"
+    http = {
+      source = "hashicorp/http"
+      version = "3.4.2"
     }
   }
 }

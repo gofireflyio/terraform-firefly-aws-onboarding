@@ -9,6 +9,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -33,6 +34,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -58,6 +60,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -83,6 +86,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -108,6 +112,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -133,6 +138,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -158,6 +164,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -183,6 +190,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -208,6 +216,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -233,6 +242,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -258,6 +268,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -283,6 +294,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -308,6 +320,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -333,6 +346,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {
@@ -358,6 +372,7 @@ provider "aws" {
    profile    = var.profile
    access_key = var.access_key
    secret_key = var.secret_key
+   allowed_account_ids = var.allowed_account_ids
    dynamic assume_role {
      for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
      content {
@@ -383,6 +398,7 @@ provider "aws" {
    profile    = var.profile
    access_key = var.access_key
    secret_key = var.secret_key
+   allowed_account_ids = var.allowed_account_ids
    dynamic assume_role {
      for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
      content {
@@ -408,6 +424,7 @@ provider "aws" {
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key
+  allowed_account_ids = var.allowed_account_ids
   dynamic assume_role {
     for_each = var.aws_assume_role_arn == "" ? toset([]) : toset([0])
     content {

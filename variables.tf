@@ -142,3 +142,9 @@ variable "firefly_organization_id" {
   default = "094724549126"
   description = "FireFly AWS account ID to allow assume role from, do not override unless explicitly needed"
 }
+
+variable "allowed_account_ids" {
+  type = list(string)
+  default = []
+  description = "List of allowed AWS account IDs to prevent you from mistakenly using an incorrect one (and potentially end up destroying a live environment)."
+}

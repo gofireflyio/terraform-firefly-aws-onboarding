@@ -937,7 +937,6 @@ module "event_driven_us_west_2" {
   resource_prefix = var.resource_prefix
 }
 
----
 module "event_driven_ap_south_2" {
   count = var.is_event_driven && var.terraform_create_rules && contains(var.event_driven_regions, "ap-south-2") ? 1 : 0
   source = "./modules/firefly_event_driven"
@@ -1027,8 +1026,6 @@ module "event_driven_il_central_1" {
   tags = var.tags
   resource_prefix = var.resource_prefix
 }
-
----
 
 module "iac_events_ap_northeast_1" {
   count = lookup(var.buckets_by_region, "ap-northeast-1", []) != [] ? 1:0
@@ -1217,7 +1214,6 @@ module "iac_events_us_west_2" {
   }
 }
 
----- 
 module "iac_events_ap_south_2" {
   count = lookup(var.buckets_by_region, "ap-south-2", []) != [] ? 1:0
   source = "./modules/s3_iac_events"
@@ -1272,8 +1268,6 @@ module "iac_events_il_central_1" {
     aws = aws.il_central_1
   }
 }
-
-----
 
 module "config_service_setup" {
   depends_on = [module.firefly_aws_integration]

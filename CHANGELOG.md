@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.4.0...v2.5.0) (2024-09-03)
+
+
+### Features
+
+* add 5 new regions ([2e4ef90](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/2e4ef90f5b78ae539af1df53724e9a752e7d46f5))
+
 ## [2.4.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.3.0...v2.4.0) (2024-06-19)
 
 

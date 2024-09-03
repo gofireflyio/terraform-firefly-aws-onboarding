@@ -1049,6 +1049,7 @@ module "iac_events_ap_northeast_2" {
   }
 }
 
+
 module "iac_events_ap_northeast_3" {
   count = lookup(var.buckets_by_region, "ap-northeast-3", []) != [] ? 1:0
   source = "./modules/s3_iac_events"

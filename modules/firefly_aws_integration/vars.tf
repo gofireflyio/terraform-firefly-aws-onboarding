@@ -48,6 +48,11 @@ variable "target_event_bus_arn"{
   type = string
 }
 
+variable "run_workflow" {
+  type = bool
+  default = true
+}
+
 variable "role_external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
@@ -63,19 +68,9 @@ variable "firefly_deny_list_policy_name"{
   description = "The name for the Firefly deny policy generated"
 }
 
-variable "use_config_service" {
-  type = bool
-  default = true
-  description = "Allow Firefly to read the config service s3 objects"
-}
 
 variable "event_driven_regions" {
   type = list(string)
-}
-
-variable "terraform_create_rules" {
-  type = bool
-  default = false
 }
 
 variable "should_autodiscover_disabled" {

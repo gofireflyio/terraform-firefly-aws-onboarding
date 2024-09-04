@@ -23,7 +23,7 @@ data "http" "firefly_aws_integration_request" {
       "isProd"= var.is_prod,
       "isEventDriven" = var.event_driven,
       "eventDrivenRegions" = var.event_driven_regions,
-      "shouldRunWorkflow" = !var.terraform_create_rules,
+      "shouldRunWorkflow" = var.run_workflow,
       "isIacAutoDiscoverDisabled" =  var.should_autodiscover_disabled
     }
   )

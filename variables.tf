@@ -113,11 +113,6 @@ variable "iac_events_sns" {
   description = "Firefly sns which receives s3 object events notification"
 }
 
-variable "use_config_service" {
-  type        = bool
-  default     = false
-  description = "Allow Firefly to read the config service s3 objects"
-}
 
 variable "enable_evntbridge_permissions" {
   type        = bool

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.6.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.5.0...v2.6.0) (2024-09-05)
+
+
+### Features
+
+* revert disabled regions ([#77](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/issues/77)) ([0e4915f](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/0e4915f2064c867f51805fa74c78c9dddfd3f294))
+
 ## [2.5.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.4.0...v2.5.0) (2024-09-03)
 
 

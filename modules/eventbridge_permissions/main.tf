@@ -14,7 +14,15 @@ resource "aws_iam_policy" "firefly_eventbridge_permission" {
     "Statement": [
         {
           "Action": [
-            "events:*"
+            "events:ListTargetsByRule",
+            "events:DescribeRule",
+            "events:PutTargets",
+            "events:PutRule",
+            "events:RemoveTargets",
+            "events:DeleteRule",
+            "events:DisableRule",
+            "events:TestEventPattern",
+            "events:EnableRule"
           ],
           "Effect": "Allow",
           "Resource": "arn:aws:events:*:${local.account_id}:rule/firefly-events-*"

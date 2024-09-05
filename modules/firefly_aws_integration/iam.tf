@@ -164,8 +164,7 @@ locals {
     length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}"] : [],
     local.aws_managed_buckets
   )
-  config_service_objects = ["arn:aws:s3:::*/${data.aws_caller_identity.current.account_id}*ConfigSnapshot*.json.gz"]
-  s3_objects_to_allow = var.use_config_service ?  concat(local.s3_objects, local.config_service_objects) : local.s3_objects
+  s3_objects_to_allow = local.s3_objects
 }
 
 resource "aws_iam_policy" "explicit_deny_s3_object_list" {

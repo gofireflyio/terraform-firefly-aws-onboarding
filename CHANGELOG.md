@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.6.0...v2.7.0) (2024-09-08)
+
+
+### Features
+
+* update hashicorp/aws requirement from >= 4.12.1, <= 5.55.0 to >= 4.12.1, <= 5.66.0 ([#72](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/issues/72)) ([ae1e3b3](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/ae1e3b3e828bc93ab4f072635023f5df1cd14d5a))
+
 ## [2.6.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.5.0...v2.6.0) (2024-09-05)
 
 

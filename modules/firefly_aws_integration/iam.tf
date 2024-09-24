@@ -236,6 +236,15 @@ resource "aws_iam_policy" "firefly_additional_fetching_permission" {
               "elasticmapreduce:GetAutoTerminationPolicy",
             ]
             "Resource": "arn:aws:elasticmapreduce:*:${local.account_id}:cluster/*"
+        },
+        {
+          "Effect": "Allow",
+          "Action": [
+            "glue:GetResourcePolicies"
+          ],
+          "Resource": [
+            "*"
+          ]
         }
     ]
 })

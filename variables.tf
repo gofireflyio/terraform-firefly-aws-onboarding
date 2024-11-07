@@ -114,6 +114,7 @@ variable "event_driven_regions" {
   ]
 }
 
+
 variable "target_event_bus_arn" {
   type        = string
   description = "The firefly event bus arn to put cloudtrail events in"

@@ -42,27 +42,27 @@ module "iac_events_us_west_2" {
   }
 }
 
-module "iac_events_af_south_1" {
-  count        = lookup(var.buckets_by_region, "af-south-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "af-south-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "af-south-1")
-  region       = "af-south-1"
-  providers = {
-    aws = aws.af_south_1
-  }
-}
+# module "iac_events_af_south_1" {
+#   count        = lookup(var.buckets_by_region, "af-south-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "af-south-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "af-south-1")
+#   region       = "af-south-1"
+#   providers = {
+#     aws = aws.af_south_1
+#   }
+# }
 
-module "iac_events_ap_east_1" {
-  count        = lookup(var.buckets_by_region, "ap-east-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "ap-east-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-east-1")
-  region       = "ap-east-1"
-  providers = {
-    aws = aws.ap_east_1
-  }
-}
+# module "iac_events_ap_east_1" {
+#   count        = lookup(var.buckets_by_region, "ap-east-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "ap-east-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-east-1")
+#   region       = "ap-east-1"
+#   providers = {
+#     aws = aws.ap_east_1
+#   }
+# }
 
 module "iac_events_ap_south_1" {
   count        = lookup(var.buckets_by_region, "ap-south-1", []) != [] ? 1 : 0
@@ -75,16 +75,16 @@ module "iac_events_ap_south_1" {
   }
 }
 
-module "iac_events_ap_south_2" {
-  count        = lookup(var.buckets_by_region, "ap-south-2", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "ap-south-2", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-south-2")
-  region       = "ap-south-2"
-  providers = {
-    aws = aws.ap_south_2
-  }
-}
+# module "iac_events_ap_south_2" {
+#   count        = lookup(var.buckets_by_region, "ap-south-2", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "ap-south-2", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-south-2")
+#   region       = "ap-south-2"
+#   providers = {
+#     aws = aws.ap_south_2
+#   }
+# }
 
 module "iac_events_ap_southeast_1" {
   count        = lookup(var.buckets_by_region, "ap-southeast-1", []) != [] ? 1 : 0
@@ -108,16 +108,16 @@ module "iac_events_ap_southeast_2" {
   }
 }
 
-module "iac_events_ap_southeast_3" {
-  count        = lookup(var.buckets_by_region, "ap-southeast-3", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "ap-southeast-3", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-southeast-3")
-  region       = "ap-southeast-3"
-  providers = {
-    aws = aws.ap_southeast_3
-  }
-}
+# module "iac_events_ap_southeast_3" {
+#   count        = lookup(var.buckets_by_region, "ap-southeast-3", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "ap-southeast-3", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "ap-southeast-3")
+#   region       = "ap-southeast-3"
+#   providers = {
+#     aws = aws.ap_southeast_3
+#   }
+# }
 
 module "iac_events_ap_northeast_1" {
   count        = lookup(var.buckets_by_region, "ap-northeast-1", []) != [] ? 1 : 0
@@ -163,27 +163,27 @@ module "iac_events_ca_central_1" {
   }
 }
 
-module "iac_events_cn_north_1" {
-  count        = lookup(var.buckets_by_region, "cn-north-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "cn-north-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "cn-north-1")
-  region       = "ca-north-1"
-  providers = {
-    aws = aws.cn_north_1
-  }
-}
-
-module "iac_events_cn_northwest_1" {
-  count        = lookup(var.buckets_by_region, "cn-northwest-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "cn-northwest-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "cn-northwest-1")
-  region       = "ca-northwest-1"
-  providers = {
-    aws = aws.cn_northwest_1
-  }
-}
+# module "iac_events_cn_north_1" {
+#   count        = lookup(var.buckets_by_region, "cn-north-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "cn-north-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "cn-north-1")
+#   region       = "ca-north-1"
+#   providers = {
+#     aws = aws.cn_north_1
+#   }
+# }
+#
+# module "iac_events_cn_northwest_1" {
+#   count        = lookup(var.buckets_by_region, "cn-northwest-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "cn-northwest-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "cn-northwest-1")
+#   region       = "ca-northwest-1"
+#   providers = {
+#     aws = aws.cn_northwest_1
+#   }
+# }
 
 module "iac_events_eu_west_1" {
   count        = lookup(var.buckets_by_region, "eu-west-1", []) != [] ? 1 : 0
@@ -218,27 +218,27 @@ module "iac_events_eu_west_3" {
   }
 }
 
-module "iac_events_eu_south_1" {
-  count        = lookup(var.buckets_by_region, "eu-south-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "eu-south-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-south-1")
-  region       = "eu-south-1"
-  providers = {
-    aws = aws.eu_south_1
-  }
-}
-
-module "iac_events_eu_south_2" {
-  count        = lookup(var.buckets_by_region, "eu-south-2", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "eu-south-2", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-south-2")
-  region       = "eu-south-2"
-  providers = {
-    aws = aws.eu_south_2
-  }
-}
+# module "iac_events_eu_south_1" {
+#   count        = lookup(var.buckets_by_region, "eu-south-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "eu-south-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-south-1")
+#   region       = "eu-south-1"
+#   providers = {
+#     aws = aws.eu_south_1
+#   }
+# }
+#
+# module "iac_events_eu_south_2" {
+#   count        = lookup(var.buckets_by_region, "eu-south-2", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "eu-south-2", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-south-2")
+#   region       = "eu-south-2"
+#   providers = {
+#     aws = aws.eu_south_2
+#   }
+# }
 
 module "iac_events_eu_north_1" {
   count        = lookup(var.buckets_by_region, "eu-north-1", []) != [] ? 1 : 0
@@ -251,27 +251,27 @@ module "iac_events_eu_north_1" {
   }
 }
 
-module "iac_events_me_south_1" {
-  count        = lookup(var.buckets_by_region, "me-south-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "me-south-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "me-south-1")
-  region       = "me-south-1"
-  providers = {
-    aws = aws.me_south_1
-  }
-}
-
-module "iac_events_me_central_1" {
-  count        = lookup(var.buckets_by_region, "me-central-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "me-central-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "me-central-1")
-  region       = "me-central-1"
-  providers = {
-    aws = aws.me_central_1
-  }
-}
+# module "iac_events_me_south_1" {
+#   count        = lookup(var.buckets_by_region, "me-south-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "me-south-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "me-south-1")
+#   region       = "me-south-1"
+#   providers = {
+#     aws = aws.me_south_1
+#   }
+# }
+#
+# module "iac_events_me_central_1" {
+#   count        = lookup(var.buckets_by_region, "me-central-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "me-central-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "me-central-1")
+#   region       = "me-central-1"
+#   providers = {
+#     aws = aws.me_central_1
+#   }
+# }
 
 module "iac_events_sa_east_1" {
   count        = lookup(var.buckets_by_region, "sa-east-1", []) != [] ? 1 : 0
@@ -284,13 +284,13 @@ module "iac_events_sa_east_1" {
   }
 }
 
-module "iac_events_eu_central_1" {
-  count        = lookup(var.buckets_by_region, "eu-central-1", []) != [] ? 1 : 0
-  source       = "./modules/s3_iac_events"
-  bucket_names = lookup(var.buckets_by_region, "eu-central-1", [])
-  sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-central-1")
-  region       = "eu-central-1"
-  providers = {
-    aws = aws.eu_central_1
-  }
-}
+# module "iac_events_eu_central_1" {
+#   count        = lookup(var.buckets_by_region, "eu-central-1", []) != [] ? 1 : 0
+#   source       = "./modules/s3_iac_events"
+#   bucket_names = lookup(var.buckets_by_region, "eu-central-1", [])
+#   sns_arn      = replace(var.iac_events_sns, "us-east-1", "eu-central-1")
+#   region       = "eu-central-1"
+#   providers = {
+#     aws = aws.eu_central_1
+#   }
+# }

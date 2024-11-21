@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.9.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.8.0...v2.9.0) (2024-11-21)
+
+
+### Features
+
+* v.2.9.0 ([4303c44](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/4303c4442784fb626ac53631f703805e11daa556))
+
 ## [2.8.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.7.0...v2.8.0) (2024-11-11)
 
 

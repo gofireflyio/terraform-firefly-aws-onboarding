@@ -32,16 +32,10 @@ variable "enable_iac_auto_discover" {
   default     = true
 }
 
-variable "allowed_s3_iac_buckets" {
-  type        = list(string)
-  description = "The list of S3 buckets to allow Firefly to read state files from. Omit to allow all buckets."
-  default     = []
-}
-
 variable "firefly_endpoint" {
   type        = string
   description = "The Firefly endpoint to register account management"
-  default     = "https://prodapi.gofirefly.io/api"
+  default     = "https://prodapi.firefly.ai/api"
 }
 
 variable "is_prod" {
@@ -114,28 +108,23 @@ variable "event_driven_regions" {
   ]
 }
 
-variable "target_event_bus_arn" {
-  type        = string
-  description = "The firefly event bus arn to put cloudtrail events in"
-  default     = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
-}
-
-variable "buckets_by_region" {
-  type        = map(list(string))
-  description = ""
-  default     = {}
-}
-
-variable "iac_events_sns" {
-  default     = "arn:aws:sns:us-east-1:094724549126:firefly-iac-states-update-topic"
-  description = "Firefly sns which receives s3 object events notification"
-}
-
 
 variable "enable_evntbridge_permissions" {
   type        = bool
   default     = true
   description = "enable firefly eventbridge permissions"
+}
+
+variable "firefly_organization_id" {
+  type        = string
+  default     = "094724549126"
+  description = "FireFly AWS account ID to allow assume role from, do not override unless explicitly needed"
+}
+
+variable "target_event_bus_arn" {
+  type        = string
+  description = "The firefly event bus arn to put cloudtrail events in"
+  default     = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
 }
 
 variable "tags" {
@@ -148,10 +137,4 @@ variable "resource_prefix" {
   type        = string
   default     = ""
   description = "Prefix to add to all resources created"
-}
-
-variable "firefly_organization_id" {
-  type        = string
-  default     = "094724549126"
-  description = "FireFly AWS account ID to allow assume role from, do not override unless explicitly needed"
 }

@@ -1,3 +1,11 @@
+module "firefly_auth" {
+  count              = var.firefly_token == "" ? 1 : 0
+  source             = "./modules/firefly_auth"
+  firefly_endpoint   = var.firefly_endpoint
+  firefly_access_key = var.firefly_access_key
+  firefly_secret_key = var.firefly_secret_key
+}
+
 # Create a new Firefly AWS integration
 module "firefly_aws_integration" {
   count                         = var.exist_integration ? 0 : 1
@@ -14,12 +22,9 @@ module "firefly_aws_integration" {
   role_name                     = local.firefly_role_name
   firefly_deny_list_policy_name = local.firefly_deny_list_policy_name
   event_driven_regions          = var.event_driven_regions
-  providers = {
-    aws = aws.us_east_1
-  }
-  resource_prefix              = var.resource_prefix
-  should_autodiscover_disabled = !var.enable_iac_auto_discover
-  allowed_s3_iac_buckets       = var.allowed_s3_iac_buckets
+  resource_prefix               = var.resource_prefix
+  should_autodiscover_disabled  = !var.enable_iac_auto_discover
+  allowed_s3_iac_buckets        = []
 }
 
 # Eventdriven Setup: allow eventbridge to send events to firefly
@@ -30,9 +35,6 @@ module "invoke_firefly_permissions" {
   depends_on = [
     module.firefly_aws_integration
   ]
-  providers = {
-    aws = aws.us_east_1
-  }
   tags            = var.tags
   resource_prefix = var.resource_prefix
 }
@@ -46,9 +48,6 @@ module "firefly_eventbridge_permissions" {
     module.firefly_aws_integration,
     module.invoke_firefly_permissions,
   ]
-  providers = {
-    aws = aws.us_east_1
-  }
   tags            = var.tags
   resource_prefix = var.resource_prefix
 }

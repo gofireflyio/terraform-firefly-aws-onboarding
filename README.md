@@ -129,7 +129,7 @@ exist_integration = true
 ### Optional
 You can optionally add tags to each relevant resource:
 ```
-tags = {vendor: "firefly"}
+tags = {project: "zeus"}
 ```
 
 You can optionally add a prefix to all created resource:

@@ -8,7 +8,7 @@ module "firefly_auth" {
 
 # Create a new Firefly AWS integration
 module "firefly_aws_integration" {
-  count                         = var.exist_integration && !var.bulk_onboarding ? 0 : 1
+  count                         = var.exist_integration && var.bulk_onboarding ? 0 : 1
   source                        = "./modules/firefly_aws_integration"
   firefly_token                 = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
   name                          = var.name

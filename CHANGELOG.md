@@ -7,6 +7,17 @@ All notable changes to this project will be documented in this file.
 
 ### Features
 
+* 2.11.0 ([4178e23](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/4178e232770bca75daaab84678649bc55172dbc9))
+* 2.11.0 ([b6522bd](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/b6522bd1763ae60ae439f9eed0f4cf356ef772c1))
+* 2.11.0 ([98000f5](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/98000f5ea9b927d6ff70ced18317da3f59dc2977))
+* 2.11.0 ([ef3009a](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/ef3009a12f0bbd357d385a8a943057c577a378e0))
+* 2.11.0 ([9cd0799](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/9cd0799a8df1ee4e3cf24eea469e092fd40a23ac))
+
+## [2.11.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.10.0...v2.11.0) (2025-01-29)
+
+
+### Features
+
 * 2.11.0 ([b6522bd](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/b6522bd1763ae60ae439f9eed0f4cf356ef772c1))
 * 2.11.0 ([98000f5](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/98000f5ea9b927d6ff70ced18317da3f59dc2977))
 * 2.11.0 ([ef3009a](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/ef3009a12f0bbd357d385a8a943057c577a378e0))

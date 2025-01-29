@@ -14,6 +14,6 @@ data "http" "cloudformation_template" {
 locals {
   discovered_accounts = var.org-ou-id != "" ? [for account in data.aws_organizations_organizational_unit_child_accounts.accounts.accounts : account if account.status == "ACTIVE"] : []
   account_ids = [for account in local.discovered_accounts : account.id]
-  applied_accounts = length(local.discovered_accounts) > 0 ? local.account_ids : var.accounts
+  applied_accounts = length(local.discovered_accounts) > 0 ? local.account_ids : []
 
 }

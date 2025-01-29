@@ -1,6 +1,6 @@
 // us_east_1
 provider "aws" {
-  region     = "us-east-1"
+  region     = var.region
   profile    = var.profile
   access_key = var.access_key
   secret_key = var.secret_key

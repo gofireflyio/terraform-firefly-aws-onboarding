@@ -3,9 +3,15 @@ variable "name" {
   description = "Name of the AWS integration"
 }
 
+variable "region" {
+  type = string
+  default = "us-east-1"
+}
+
 variable "role_external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
+  default = ""
 }
 
 variable "firefly_token" {

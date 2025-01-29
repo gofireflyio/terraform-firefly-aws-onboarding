@@ -6,5 +6,9 @@ output "firefly_integration_role_name" {
 }
 
 output "discovered_accounts" {
-  value = length(module.aws-bulk-integrations.targeted_accounts) > 0 ? module.aws-bulk-integrations.targeted_accounts : null
+  value = length(module.aws-bulk-integrations.discovered_accounts) > 0 ? module.aws-bulk-integrations.discovered_accounts : null
+}
+
+output "applied_accounts" {
+  value = length(module.aws-bulk-integrations.applied_accounts) > 0 ? module.aws-bulk-integrations.applied_accounts : null
 }

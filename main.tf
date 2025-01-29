@@ -8,7 +8,8 @@ module "firefly_auth" {
 
 # Create a new Firefly AWS integration
 module "firefly_aws_integration" {
-  count                         = var.exist_integration && var.bulk_onboarding ? 0 : 1
+  #         false & false
+  count                         = !var.bulk_onboarding && !var.exist_integration ? 1 : 0
   source                        = "./modules/firefly_aws_integration"
   firefly_token                 = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
   name                          = var.name
@@ -33,9 +34,6 @@ module "invoke_firefly_permissions" {
   count                = var.is_event_driven && !var.bulk_onboarding ? 1 : 0
   source               = "./modules/invoke_firefly_permissions"
   target_event_bus_arn = var.target_event_bus_arn
-  depends_on = [
-    module.firefly_aws_integration
-  ]
   tags = merge(var.tags, local.tags)
   resource_prefix = var.resource_prefix
 }
@@ -46,8 +44,7 @@ module "firefly_eventbridge_permissions" {
   source            = "./modules/eventbridge_permissions"
   firefly_role_name = local.firefly_role_name
   depends_on = [
-    module.firefly_aws_integration,
-    module.invoke_firefly_permissions,
+    module.invoke_firefly_permissions
   ]
   tags = merge(var.tags, local.tags)
   resource_prefix = var.resource_prefix
@@ -63,7 +60,6 @@ module "run_workflow" {
   events_role_arn      = module.invoke_firefly_permissions[0].invoke_firefly_role_arn
   event_driven_regions = var.event_driven_regions
   depends_on = [
-    module.firefly_aws_integration,
     module.invoke_firefly_permissions,
     module.firefly_eventbridge_permissions
   ]

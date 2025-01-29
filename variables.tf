@@ -138,3 +138,23 @@ variable "resource_prefix" {
   default     = ""
   description = "Prefix to add to all resources created"
 }
+
+variable "org_ou_id" {
+  type = string
+  default = ""
+}
+
+variable "accounts" {
+  type = list(string)
+  default = []
+}
+
+variable "bulk_onboarding" {
+  type = bool
+  default = false
+}
+
+variable "max_concurrent_deploys" {
+  type = number
+  default = 1
+}

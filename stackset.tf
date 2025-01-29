@@ -1,7 +1,7 @@
 module "aws-bulk-integrations" {
   count = var.bulk_onboarding ? 1 : 0
 
-  source = "../../../../modules/terraform-firefly-aws-onboarding"
+  source = "./modules/stackset-onboarding"
   external-id = var.external_id
   token = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
   org-ou-id = var.org_ou_id

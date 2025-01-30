@@ -1,9 +1,9 @@
 variable "external-id" {
   type = string
 }
-variable "org-ou-id" {
-  type = string
-  default = ""
+variable "org-ou-ids" {
+  type = list(string)
+  default = [""]
 }
 
 variable "cloudformation_template_url" {

@@ -34,7 +34,7 @@ module "firefly" {
   bulk_onboarding       = true
   // cloudformation region
   region                = "us-east-1"
-  org_ou_id             = "ou-..."
+  org_ou_ids             = ["ou-...", "ou-..."]
 }
 ```
 

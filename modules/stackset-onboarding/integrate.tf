@@ -10,7 +10,7 @@ data "http" "firefly_aws_integration_request" {
   request_body = jsonencode(
     {
       "name"= each.value,
-      "roleArn"= "arn:aws:iam::${each.value}:role/stackset-firefly-caa-role",
+      "roleArn"= "arn:aws:iam::${each.value}:role/firefly-caa-role",
       "externalId"= var.external-id,
       "fullScanEnabled"= true,
       "isProd"= var.is_prod,
@@ -30,7 +30,7 @@ module "run_workflow" {
   firefly_token        = var.token
   name                 = each.value
   firefly_endpoint     = var.endpoint
-  events_role_arn      = "arn:aws:iam::${each.value}:role/stackset-firefly-remote-event-bus"
+  events_role_arn      = "arn:aws:iam::${each.value}:role/invoke-firefly-remote-event-bus"
   event_driven_regions = var.event_driven_regions
   depends_on = [
     aws_cloudformation_stack_set_instance.triggerOutDeploy

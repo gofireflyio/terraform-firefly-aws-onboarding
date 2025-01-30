@@ -15,7 +15,30 @@ Firefly terraform module to integrate your aws environment to firefly.
 curl --help
 ```
 
-### Installation 
+
+### Multi Account Installation with Stackset
+
+```hcl-terraform
+module "firefly-auth" {
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0/modules/firefly_auth"
+  firefly_access_key    = "YOUR_ACCESS_KEY"
+  firefly_secret_key    = "YOUR_SECRET_KEY"
+}
+
+module "firefly" {
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0"
+  firefly_token         = module.firefly-auth.firefly_token
+  is_prod               = false/true
+  external_id           = "YOUR_EXTERNAL_ID"
+  event_driven_regions  = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-south-2","ap-southeast-1","ap-southeast-2","ap-southeast-3","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-south-2","eu-north-1","me-south-1","me-central-1","sa-east-1","il-central-1"]
+  bulk_onboarding       = true
+  // cloudformation region
+  region                = "us-east-1"
+  org_ou_id             = "ou-..."
+}
+```
+
+### Single Account Installation 
 
 ```hcl-terraform
 provider "aws" {
@@ -24,22 +47,23 @@ provider "aws" {
 
 
 module "firefly_auth" {
-  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0/modules/firefly_auth"
+  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0/modules/firefly_auth"
   firefly_access_key    = "YOUR_ACCESS_KEY"
   firefly_secret_key    = "YOUR_SECRET_KEY"
 }
 
 module "firefly-read-only" {
-  source              = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0"
+  source              = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0"
   firefly_token         = module.firefly_auth.firefly_token
   role_external_id    = "YOUR_EXTERNAL_ID"
   is_prod               = false/true
+  event_driven_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
 }
 ```
 
 ### Upgrading to from v1.y.z to v2.y.z
 Use of `devops-rob/terracurl` provider is removed in favour of official `hashicorp/http`
-Prior to upgrading it is reuqired to remove the deprecated resources from the state eg:
+Prior to upgrading it is required to remove the deprecated resources from the state eg:
 ```
 terraform state list | grep terracurl_request
 
@@ -53,109 +77,15 @@ Successfully removed 1 resource instance(s).
 ```
 
 
-### Installation with Event Driven
-
-```hcl-terraform
-provider "aws" {
-    region     =  "us-east-1"
-}
-
-module "firefly_auth" {
-  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0/modules/firefly_auth"
-  firefly_access_key    = "YOUR_ACCESS_KEY"
-  firefly_secret_key    = "YOUR_SECRET_KEY"
-}
-
-module "firefly-read-only" {
-  source               = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0"
-  firefly_token        = module.firefly_auth.firefly_token
-  role_external_id     = "YOUR_EXTERNAL_ID"
-  is_prod              = false/true
-  is_event_driven      = true
-  terraform_create_rules = false 
-  event_driven_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
-}
-```
-
-### Installation with Config Service
-
-```hcl-terraform
-provider "aws" {
-    region     =  "us-east-1"
-}
-
-module "firefly_auth" {
-  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0/modules/firefly_auth"
-  firefly_access_key    = "YOUR_ACCESS_KEY"
-  firefly_secret_key    = "YOUR_SECRET_KEY"
-}
-
-
-module "firefly-read-only" {
-  source               = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v1.7.0"
-  firefly_token         = module.firefly_auth.firefly_token
-  role_external_id     = "YOUR_EXTERNAL_ID"
-  is_prod              = false/true
-  is_event_driven      = true
-  event_driven_regions = ["us-east-1","us-east-2","us-west-1","us-west-2","af-south-1","ap-east-1","ap-south-1","ap-southeast-1","ap-southeast-2","ap-northeast-1","ap-northeast-2","ap-northeast-3","ca-central-1","cn-north-1","cn-northwest-1","eu-central-1","eu-west-1","eu-west-2","eu-west-3","eu-south-1","eu-north-1","me-south-1","sa-east-1"]
-}
-```
-
-### Add Event Driven to Existing Integration
-In order to install event-driven for an existing firefly integration just call the module with:
-```
-exist_integration = true
-```
-
-### Control Over IAC Auto Discover
-In order to be able to control whether to create the integration with IaC auto discover. `True` by default.
-```
-enable_iac_auto_discover = true
-```
-
-### Control Over S3 Buckets To Read tfstate Files From
-By default all S3 buckets are scanned for tfstate files. To limit the scope to a closed list of s3 buckets set the following variable:
-```
-allowed_s3_iac_buckets = ["bucket1", "bucket2", "bucket3"]
-```
-
-### Remove Event Driven from Existing Integration
-In order to remove event-driven for an existing integration just call the module with:
-```
-is_event_driven = false
-exist_integration = true
-```
-
 ### Optional
 You can optionally add tags to each relevant resource:
 ```
-tags = {project: "zeus"}
+tags = {
+  project: "zeus"
+}
 ```
 
 You can optionally add a prefix to all created resource:
 ```
 resource_prefix = "prod-"
 ```
-
-AWS credentials will be default unless adding one of the following params to the configuration:
-```
-profile = "YOUR_PROFILE"
-```
-OR
-```
-access_key = "YOUR_AWS_ACCESS_KEY"
-secret_key = "YOUR_SECRET_KEY"
-```
-OR
-```
-aws_assume_role_arn = "YOUR_ROLE_ARN"
-session_name = "YOUR_SESSION_NAME"
-external_id = "YOUR_EXTERNAL_ID"
-```
-OR
-```
-aws_assume_web_identity_role_arn = "YOUR_ROLE_ARN"
-aws_assume_web_identity_role_token = "YOUR_ROLE_TOKEN"
-OR
-aws_assume_web_identity_role_token_file = "YOUR_TOKEN_FILE"
-

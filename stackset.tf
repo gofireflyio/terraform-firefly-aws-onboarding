@@ -4,6 +4,6 @@ module "aws-bulk-integrations" {
   source = "./modules/stackset-onboarding"
   external-id = var.external_id
   token = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
-  org-ou-id = var.org_ou_id
+  org-ou-ids = var.org_ou_ids
   max_concurrent_deploys = var.max_concurrent_deploys
 }

@@ -135,9 +135,9 @@ variable "resource_prefix" {
   description = "Prefix to add to all resources created"
 }
 
-variable "org_ou_id" {
-  type = string
-  default = ""
+variable "org_ou_ids" {
+  type = list(string)
+  default = [""]
 }
 
 variable "bulk_onboarding" {

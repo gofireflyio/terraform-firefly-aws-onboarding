@@ -7,7 +7,7 @@ data "http" "firefly_run_workflow_request" {
   }
   request_body = jsonencode(
     {
-      "name"= var.name
+      "name": var.name
       "eventsRoleArn": var.events_role_arn
       "eventDrivenRegions": var.event_driven_regions
     }

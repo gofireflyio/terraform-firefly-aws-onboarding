@@ -20,13 +20,13 @@ curl --help
 
 ```hcl-terraform
 module "firefly-auth" {
-  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0/modules/firefly_auth"
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.13.0/modules/firefly_auth"
   firefly_access_key    = "YOUR_ACCESS_KEY"
   firefly_secret_key    = "YOUR_SECRET_KEY"
 }
 
 module "firefly" {
-  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0"
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.13.0"
   firefly_token         = module.firefly-auth.firefly_token
   is_prod               = false/true
   external_id           = "YOUR_EXTERNAL_ID"
@@ -47,13 +47,13 @@ provider "aws" {
 
 
 module "firefly_auth" {
-  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0/modules/firefly_auth"
+  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.13.0/modules/firefly_auth"
   firefly_access_key    = "YOUR_ACCESS_KEY"
   firefly_secret_key    = "YOUR_SECRET_KEY"
 }
 
 module "firefly-read-only" {
-  source              = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.12.0"
+  source              = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.13.0"
   firefly_token         = module.firefly_auth.firefly_token
   role_external_id    = "YOUR_EXTERNAL_ID"
   is_prod               = false/true

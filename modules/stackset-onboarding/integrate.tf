@@ -24,15 +24,15 @@ data "http" "firefly_aws_integration_request" {
 
 
 # Eventdriven Setup: trigger eventbridge rules creation
-module "run_workflow" {
-  for_each = toset(local.account_ids)
-  source               = "../run_workflow"
-  firefly_token        = var.token
-  name                 = each.value
-  firefly_endpoint     = var.endpoint
-  events_role_arn      = "arn:aws:iam::${each.value}:role/invoke-firefly-remote-event-bus"
-  event_driven_regions = var.event_driven_regions
-  depends_on = [
-    aws_cloudformation_stack_set_instance.triggerOutDeploy
-  ]
-}
+# module "run_workflow" {
+#   for_each = toset(local.account_ids)
+#   source               = "../run_workflow"
+#   firefly_token        = var.token
+#   name                 = each.value
+#   firefly_endpoint     = var.endpoint
+#   events_role_arn      = "arn:aws:iam::${each.value}:role/invoke-firefly-remote-event-bus"
+#   event_driven_regions = var.event_driven_regions
+#   depends_on = [
+#     aws_cloudformation_stack_set_instance.triggerOutDeploy
+#   ]
+# }

@@ -1,15 +1,3 @@
-variable "firefly_access_key" {
-  type        = string
-  description = "Your authentication access_key"
-  default = ""
-}
-
-variable "firefly_secret_key" {
-  type        = string
-  description = "Your authentication secret_key"
-  default = ""
-}
-
 variable "firefly_token" {
   type = string
   description = "Token returned as result of login request, if provided firefly_access_key and firefly_secret_key are ignored"
@@ -44,9 +32,6 @@ variable "event_driven"{
   description = "Is event driven infrastructre installed?"
 }
 
-variable "target_event_bus_arn"{
-  type = string
-}
 
 variable "run_workflow" {
   type = bool

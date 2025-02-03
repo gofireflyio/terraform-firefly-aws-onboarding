@@ -16,7 +16,6 @@ module "firefly_aws_integration" {
   firefly_endpoint              = var.firefly_endpoint
   firefly_organization_id       = var.firefly_organization_id
   event_driven                  = var.is_event_driven
-  target_event_bus_arn          = var.target_event_bus_arn
   is_prod                       = var.is_prod
   full_scan_enabled             = var.full_scan_enabled
   role_external_id              = var.role_external_id
@@ -51,16 +50,16 @@ module "firefly_eventbridge_permissions" {
 }
 
 # Eventdriven Setup: trigger eventbridge rules creation
-module "run_workflow" {
-  count                = var.is_event_driven && var.exist_integration && !var.bulk_onboarding ? 1 : 0
-  source               = "./modules/run_workflow"
-  firefly_token        = var.firefly_token
-  name                 = var.name
-  firefly_endpoint     = var.firefly_endpoint
-  events_role_arn      = module.invoke_firefly_permissions[0].invoke_firefly_role_arn
-  event_driven_regions = var.event_driven_regions
-  depends_on = [
-    module.invoke_firefly_permissions,
-    module.firefly_eventbridge_permissions
-  ]
-}
+# module "run_workflow" {
+#   count                = var.is_event_driven && var.exist_integration && !var.bulk_onboarding ? 1 : 0
+#   source               = "./modules/run_workflow"
+#   firefly_token        = var.firefly_token
+#   name                 = var.name
+#   firefly_endpoint     = var.firefly_endpoint
+#   events_role_arn      = module.invoke_firefly_permissions[0].invoke_firefly_role_arn
+#   event_driven_regions = var.event_driven_regions
+#   depends_on = [
+#     module.invoke_firefly_permissions,
+#     module.firefly_eventbridge_permissions
+#   ]
+# }

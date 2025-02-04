@@ -6,6 +6,11 @@ variable "org-ou-ids" {
   default = [""]
 }
 
+variable "failure_tolerance_count" {
+  type = number
+  default = 1
+}
+
 variable "cloudformation_template_url" {
   type = string
   default = "https://infralight-templates-public.s3.us-east-1.amazonaws.com/stackset-cloudformation-template.yml"

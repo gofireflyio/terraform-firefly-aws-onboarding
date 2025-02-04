@@ -6,4 +6,5 @@ module "aws-bulk-integrations" {
   token = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
   org-ou-ids = var.org_ou_ids
   max_concurrent_deploys = var.max_concurrent_deploys
+  failure_tolerance_count = var.failure_tolerance_count
 }

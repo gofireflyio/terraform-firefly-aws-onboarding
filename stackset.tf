@@ -7,4 +7,5 @@ module "aws-bulk-integrations" {
   org-ou-ids = var.org_ou_ids
   max_concurrent_deploys = var.max_concurrent_deploys
   failure_tolerance_count = var.failure_tolerance_count
+  concurrency_mode = var.concurrency_mode
 }

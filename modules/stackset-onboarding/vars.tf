@@ -11,6 +11,11 @@ variable "failure_tolerance_count" {
   default = 1
 }
 
+variable "concurrency_mode" {
+  type = string
+  default = "SOFT_FAILURE_TOLERANCE"
+}
+
 variable "cloudformation_template_url" {
   type = string
   default = "https://infralight-templates-public.s3.us-east-1.amazonaws.com/stackset-cloudformation-template.yml"

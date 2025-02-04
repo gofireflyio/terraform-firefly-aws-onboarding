@@ -123,6 +123,11 @@ variable "target_event_bus_arn" {
   default     = "arn:aws:events:us-east-1:094724549126:event-bus/prod-stablefly-event-bus"
 }
 
+variable "concurrency_mode" {
+  type = string
+  default = "SOFT_FAILURE_TOLERANCE"
+}
+
 variable "failure_tolerance_count" {
   type = number
   default = 1

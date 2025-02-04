@@ -20,6 +20,7 @@ data "http" "firefly_aws_integration_request" {
       "isIacAutoDiscoverDisabled" =  false
     }
   )
+  depends_on = [aws_cloudformation_stack_set_instance.triggerOutDeploy]
 }
 
 

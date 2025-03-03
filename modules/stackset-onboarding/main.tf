@@ -25,6 +25,9 @@ resource "aws_iam_role_policy" "AWSCloudFormationStackSetAdministrationRole_Exec
   name   = "FireflyExecutionPolicy"
   policy = data.aws_iam_policy_document.AWSCloudFormationStackSetAdministrationRole_ExecutionPolicy.json
   role   = aws_iam_role.FireflyAWSCloudFormationStackSetAdministrationRole.name
+  lifecycle {
+    ignore_changes = [policy]
+  }
 }
 
 # create role with attached policy
@@ -49,10 +52,11 @@ resource "aws_cloudformation_stack_set" "FireflyStackSet" {
   }
 
   template_body = data.http.cloudformation_template.response_body
-  #template_body = file("${path.module}/templates/stack.yml")
-
   tags = {
     firefly = "true"
+  }
+  lifecycle {
+    ignore_changes = [administration_role_arn]
   }
 }
 

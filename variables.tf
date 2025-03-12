@@ -1,18 +1,18 @@
 variable "name" {
   type        = string
   description = "Name of the AWS integration"
-  default = ""
+  default     = ""
 }
 
 variable "region" {
-  type = string
+  type    = string
   default = "us-east-1"
 }
 
 variable "role_external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
-  default = ""
+  default     = ""
 }
 
 variable "firefly_token" {
@@ -124,12 +124,12 @@ variable "target_event_bus_arn" {
 }
 
 variable "concurrency_mode" {
-  type = string
+  type    = string
   default = "SOFT_FAILURE_TOLERANCE"
 }
 
 variable "failure_tolerance_count" {
-  type = number
+  type    = number
   default = 1
 }
 
@@ -146,17 +146,22 @@ variable "resource_prefix" {
 }
 
 variable "org_ou_ids" {
-  type = list(string)
+  type    = list(string)
   default = [""]
 }
 
 variable "bulk_onboarding" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "max_concurrent_deploys" {
-  type = number
+  type    = number
   default = 1
 }
 
+variable "allowed_s3_iac_buckets" {
+  type        = list(string)
+  description = "The list of S3 buckets to allow Firefly to read state files from. Omit to allow all buckets."
+  default     = []
+}

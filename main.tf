@@ -24,8 +24,8 @@ module "firefly_aws_integration" {
   event_driven_regions          = var.event_driven_regions
   resource_prefix               = var.resource_prefix
   should_autodiscover_disabled  = !var.enable_iac_auto_discover
-  allowed_s3_iac_buckets        = []
-  tags = merge(var.tags, local.tags)
+  allowed_s3_iac_buckets        = var.allowed_s3_iac_buckets
+  tags                          = merge(var.tags, local.tags)
 }
 
 # Eventdriven Setup: allow eventbridge to send events to firefly
@@ -33,8 +33,8 @@ module "invoke_firefly_permissions" {
   count                = var.is_event_driven && !var.bulk_onboarding ? 1 : 0
   source               = "./modules/invoke_firefly_permissions"
   target_event_bus_arn = var.target_event_bus_arn
-  tags = merge(var.tags, local.tags)
-  resource_prefix = var.resource_prefix
+  tags                 = merge(var.tags, local.tags)
+  resource_prefix      = var.resource_prefix
 }
 
 # Eventdriven Setup: allow firefly to create eventbridge rules
@@ -45,7 +45,7 @@ module "firefly_eventbridge_permissions" {
   depends_on = [
     module.invoke_firefly_permissions
   ]
-  tags = merge(var.tags, local.tags)
+  tags            = merge(var.tags, local.tags)
   resource_prefix = var.resource_prefix
 }
 

@@ -24,7 +24,8 @@ module "firefly_aws_integration" {
   event_driven_regions          = var.event_driven_regions
   resource_prefix               = var.resource_prefix
   should_autodiscover_disabled  = !var.enable_iac_auto_discover
-  allowed_s3_iac_buckets        = []
+  allowed_s3_iac_buckets        = var.allowed_s3_iac_buckets
+  kms_key_arn_list              = var.kms_key_arn_list
   tags = merge(var.tags, local.tags)
 }
 

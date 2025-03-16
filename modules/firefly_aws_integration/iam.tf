@@ -156,7 +156,6 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
 locals {
   allowed_objects = length(var.allowed_s3_iac_buckets) > 0 ? [for value in var.allowed_s3_iac_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
   aws_managed_buckets = [    
-    "arn:aws:s3:::elasticbeanstalk*/*",
     "arn:aws:s3:::aws-emr-resources*/*"
   ]
   s3_objects = concat(local.aws_managed_buckets, local.allowed_objects)
@@ -201,7 +200,7 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
           "kms:Decrypt"
         ],
         "Effect" : "Allow",
-        "Resource" : "arn:aws:kms:*:${local.account_id}:key/*"
+        "Resource" : var.kms_key_arn_list
       },
       {
         "Action" : [

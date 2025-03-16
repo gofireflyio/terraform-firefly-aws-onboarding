@@ -87,3 +87,9 @@ variable "firefly_organization_id" {
   default = "094724549126"
   description = "AWS account ID to allow assume role from"
 }
+
+variable "kms_key_arn_list" {
+  type        = list(string)
+  description = "The list of KMS keys to allow Firefly to decrypt. Omit to allow all keys."
+  default     = []
+}

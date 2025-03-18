@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.13.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.12.0...v2.13.0) (2025-03-18)
+
+
+### Features
+
+* 2.13.0 ([ea2a225](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/ea2a225fb657614be0ccae70b5d84e4af61f774d))
+* 2.13.0 ([051079a](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/051079ad62b8adfb9b210cd60a1391f20e97e1d3))
+* 2.13.0 ([a9cb1f2](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/a9cb1f2eba8cdd079a23582caf2c176a0e7bda20))
+* 2.13.0 ([011fc54](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/011fc546a0884c2716fd421f7a2b23c1365dadf3))
+* 2.13.0 ([51b874e](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/51b874ed73bac619b07ed7eadb928acde1a959b9))
+* 2.13.0 ([974de4c](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/974de4c2392dfa433febbdf365cf5265421508be))
+* 2.13.0 ([51716b1](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/51716b147e3bd939e818404d435bf355c3bb15a2))
+* 2.13.0 ([5e8eaaa](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/5e8eaaaa62f68353429022f35540b04fd6efa541))
+* 2.13.0 ([bc2ea6b](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/bc2ea6b86f4221042be193a4ab4df72f47962450))
+* 2.13.0 ([9a94402](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/9a944027e7db846a68c4f4ec9f4c2b3c5cb74182))
+* 2.13.0 ([6cf7391](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/6cf73918dfd62b0004577ac69e18c51bba5882ab))
+
 ## [2.13.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.12.0...v2.13.0) (2025-03-03)
 
 

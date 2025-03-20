@@ -76,7 +76,7 @@ variable "full_scan_enabled" {
 
 variable "is_event_driven" {
   type        = bool
-  default     = false
+  default     = true
   description = "Install Event driven?"
 }
 

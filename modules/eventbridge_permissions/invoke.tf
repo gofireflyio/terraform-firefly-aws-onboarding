@@ -15,20 +15,20 @@ resource "aws_iam_role" "invoke_firefly_event_bus" {
   ]
 }
 EOF
-  tags = var.tags
+  tags               = var.tags
 }
 
 resource "aws_iam_policy" "invoke_firefly_event_bus" {
-  name   = "${var.resource_prefix}invoke-firefly-remote-event-bus"
+  name = "${var.resource_prefix}invoke-firefly-remote-event-bus"
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Action": [
+        "Action" : [
           "events:PutEvents"
         ],
-        "Effect": "Allow",
-        "Resource": var.target_event_bus_arn
+        "Effect" : "Allow",
+        "Resource" : var.target_event_bus_arn
       }
     ]
   })

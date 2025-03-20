@@ -2,31 +2,31 @@ variable "external-id" {
   type = string
 }
 variable "org-ou-ids" {
-  type = list(string)
+  type    = list(string)
   default = [""]
 }
 
 variable "failure_tolerance_count" {
-  type = number
+  type    = number
   default = 1
 }
 
 variable "concurrency_mode" {
-  type = string
+  type    = string
   default = "SOFT_FAILURE_TOLERANCE"
 }
 
 variable "cloudformation_template_url" {
-  type = string
+  type    = string
   default = "https://infralight-templates-public.s3.us-east-1.amazonaws.com/stackset-cloudformation-template.yml"
 }
 
 variable "endpoint" {
-  type = string
+  type    = string
   default = "https://prodapi.firefly.ai/api"
 }
 variable "production" {
-  type = bool
+  type    = bool
   default = false
 }
 variable "event_driven_regions" {
@@ -68,6 +68,6 @@ variable "token" {
 }
 
 variable "max_concurrent_deploys" {
-  type = number
+  type    = number
   default = 1
 }

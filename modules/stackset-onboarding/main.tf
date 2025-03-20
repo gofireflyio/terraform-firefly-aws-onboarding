@@ -38,13 +38,13 @@ resource "aws_iam_role" "FireflyAWSCloudFormationStackSetAdministrationRole" {
 
 # create stackset
 resource "aws_cloudformation_stack_set" "FireflyStackSet" {
-  name                    = "FireflyOnboarding"
+  name = "FireflyOnboarding"
 
   permission_model = "SERVICE_MANAGED"
-  capabilities = ["CAPABILITY_NAMED_IAM"]
+  capabilities     = ["CAPABILITY_NAMED_IAM"]
 
   auto_deployment {
-    enabled = true
+    enabled                          = true
     retain_stacks_on_account_removal = false
   }
   parameters = {

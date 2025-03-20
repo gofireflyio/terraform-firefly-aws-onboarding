@@ -36,13 +36,15 @@ module "firefly" {
     "ca-central-1", "cn-north-1", "cn-northwest-1", "eu-central-1", "eu-west-1", "eu-west-2", "eu-west-3", "eu-south-1",
     "eu-south-2", "eu-north-1", "me-south-1", "me-central-1", "sa-east-1", "il-central-1"
   ]
-
-  # Multi Account onboarding using org ou ids
-  bulk_onboarding = true
-  # Stackset deployment region
+  
+  stackset        = true
   region          = "us-east-1"
   org_ou_ids      = ["ou-...", "ou-..."]
-}  
+} 
+```
+### Multi Account (optional):  Additional OU with Stackset Instance
+usable when you wish to deploy an **_ou_** with a dedicated instance.
+```hcl-terraform
 # OPTIONAL: additional ou ids with seperate stackset_instance
 resource "aws_cloudformation_stack_set_instance" "ou-id-0" {
   deployment_targets {

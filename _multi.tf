@@ -9,3 +9,7 @@ module "aws-bulk-integrations" {
   failure_tolerance_count = var.failure_tolerance_count
   concurrency_mode = var.concurrency_mode
 }
+
+output "stackset-name" {
+  value = module.aws-bulk-integrations[0].stackset-name
+}

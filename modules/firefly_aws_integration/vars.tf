@@ -4,9 +4,14 @@ variable "firefly_token" {
   default = ""
 }
 
-variable "name" {
+variable "integration_name" {
   type        = string
   description = "Name of the AWS integration"
+}
+
+variable "target_event_bus_arn" {
+  type        = string
+  description = "The firefly event bus arn to put cloudtrail events in"
 }
 
 variable "firefly_endpoint" {
@@ -14,31 +19,13 @@ variable "firefly_endpoint" {
   description = "The Firefly endpoint to register account management"
 }
 
-variable "is_prod" {
+variable "production" {
   type        = bool
   default     = false
   description = "Is Production?"
 }
 
-variable "full_scan_enabled" {
-  type        = bool
-  default     = true
-  description = "Full scan enabled?"
-}
-
-variable "event_driven"{
-  type = bool
-  default = false 
-  description = "Is event driven infrastructre installed?"
-}
-
-
-variable "run_workflow" {
-  type = bool
-  default = true
-}
-
-variable "role_external_id" {
+variable "external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
 }
@@ -48,21 +35,11 @@ variable "role_name"{
   description = "The name for the Firefly role generated"
 }
 
-variable "firefly_deny_list_policy_name"{
-  type        = string
-  description = "The name for the Firefly deny policy generated"
-}
-
 
 variable "event_driven_regions" {
   type = list(string)
 }
 
-variable "should_autodiscover_disabled" {
-  type        = bool
-  description = "Whether to create the integration with IaC auto discover (searches for state files in S3 buckets)"
-  default     = false
-}
 
 variable "allowed_s3_iac_buckets" {
   type        = list(string)

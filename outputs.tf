@@ -8,3 +8,11 @@ output "firefly_integration_role_name" {
 output "discovered_accounts" {
   value = var.bulk_onboarding ? module.aws-bulk-integrations[0].discovered_accounts : null
 }
+
+output "integration_response_status_codes" {
+  value = var.bulk_onboarding ? module.aws-bulk-integrations[0].integration_status_codes : module.firefly_aws_integration[0].integration_status_code
+}
+
+output "integration_response_body" {
+  value = var.bulk_onboarding ? module.aws-bulk-integrations[0].integration_response_bodies : module.firefly_aws_integration[0].integration_response_body
+}

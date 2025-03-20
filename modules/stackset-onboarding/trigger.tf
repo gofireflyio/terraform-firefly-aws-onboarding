@@ -1,4 +1,3 @@
-
 resource "aws_cloudformation_stack_set_instance" "triggerOutDeploy" {
   deployment_targets {
       organizational_unit_ids = var.org-ou-ids

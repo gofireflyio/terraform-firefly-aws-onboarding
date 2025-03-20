@@ -4,12 +4,6 @@ variable "profile" {
   type        = string
 }
 
-variable "external_id" {
-  description = "The aws external id to create aws provider with"
-  default     = ""
-  type        = string
-}
-
 variable "access_key" {
   description = "The aws access key to create aws provider with"
   default     = ""
@@ -30,12 +24,6 @@ variable "session_name" {
 
 variable "aws_assume_role_arn" {
   description = "The aws assume role arn to create aws provider with"
-  default     = ""
-  type        = string
-}
-
-variable "aws_assume_role_external_id" {
-  description = "The aws assume role external id to create aws provider with"
   default     = ""
   type        = string
 }

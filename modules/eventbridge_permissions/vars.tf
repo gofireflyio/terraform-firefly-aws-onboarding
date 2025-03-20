@@ -13,3 +13,7 @@ variable "resource_prefix" {
   default = ""
   description = "Prefix to add to all resources created"
 }
+
+variable "target_event_bus_arn"{
+  type = string
+}

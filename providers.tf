@@ -1,4 +1,3 @@
-// us_east_1
 provider "aws" {
   region     = var.region
   profile    = var.profile

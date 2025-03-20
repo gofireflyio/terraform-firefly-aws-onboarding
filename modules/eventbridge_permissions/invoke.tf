@@ -23,13 +23,13 @@ resource "aws_iam_policy" "invoke_firefly_event_bus" {
   policy = jsonencode({
     "Version": "2012-10-17",
     "Statement": [
-        {
-          "Action": [
-            "events:PutEvents"
-          ],
-          "Effect": "Allow",
-          "Resource": var.target_event_bus_arn
-        }
+      {
+        "Action": [
+          "events:PutEvents"
+        ],
+        "Effect": "Allow",
+        "Resource": var.target_event_bus_arn
+      }
     ]
   })
   tags = var.tags

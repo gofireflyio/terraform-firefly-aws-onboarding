@@ -1,4 +1,4 @@
-variable "name" {
+variable "integration_name" {
   type        = string
   description = "Name of the AWS integration"
   default = ""
@@ -9,7 +9,7 @@ variable "region" {
   default = "us-east-1"
 }
 
-variable "role_external_id" {
+variable "external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
   default = ""
@@ -33,51 +33,21 @@ variable "firefly_secret_key" {
   default     = ""
 }
 
-variable "enable_iac_auto_discover" {
-  type        = bool
-  description = "Whether to create the integration with IaC auto discover (searches for state files in S3 buckets)"
-  default     = true
-}
-
 variable "firefly_endpoint" {
   type        = string
   description = "The Firefly endpoint to register account management"
   default     = "https://prodapi.firefly.ai/api"
 }
 
-variable "is_prod" {
+variable "production" {
   type        = bool
   default     = false
   description = "Is Production?"
 }
 
-variable "exist_integration" {
-  type        = bool
-  default     = false
-  description = "Whether the integration already exists or not"
-}
-
 variable "firefly_role_name" {
   default = "firefly-caa-role"
   type    = string
-}
-
-variable "firefly_deny_list_policy_name" {
-  type        = string
-  description = "The name for the Firefly deny policy generated"
-  default     = "FireflyReadonlyPolicyDenyList"
-}
-
-variable "full_scan_enabled" {
-  type        = bool
-  default     = true
-  description = "Full scan enabled?"
-}
-
-variable "is_event_driven" {
-  type        = bool
-  default     = true
-  description = "Install Event driven?"
 }
 
 variable "event_driven_regions" {
@@ -102,13 +72,6 @@ variable "event_driven_regions" {
     "eu-north-1",
     "sa-east-1"
   ]
-}
-
-
-variable "enable_evntbridge_permissions" {
-  type        = bool
-  default     = true
-  description = "enable firefly eventbridge permissions"
 }
 
 variable "firefly_organization_id" {

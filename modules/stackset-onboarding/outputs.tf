@@ -14,10 +14,6 @@ output "cloudformation_template" {
   value = data.http.cloudformation_template.response_body
 }
 
-output "integration_status_codes" {
-  value = data.http.firefly_aws_integration_request[*].status_code
-}
-
-output "integration_response_bodies" {
-  value = data.http.firefly_aws_integration_request[*].response_body
+output "integration_responses" {
+  value = [for account_id in local.account_ids : "${account_id} - ${data.http.firefly_aws_integration_request[account_id].response_body} - ${data.http.firefly_aws_integration_request[account_id].status_code}"]
 }

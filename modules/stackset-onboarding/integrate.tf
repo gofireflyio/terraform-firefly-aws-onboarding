@@ -22,8 +22,8 @@ data "http" "firefly_aws_integration_request" {
   depends_on = [aws_cloudformation_stack_set_instance.triggerOutDeploy]
   lifecycle {
     postcondition {
-      condition     = contains([200, 201, 409], self.status_code)
-      error_message = "Contact Firefly team for more information"
+      condition     = contains([200, 201], self.status_code)
+      error_message = "Contact Firefly Team for more information"
     }
   }
 }

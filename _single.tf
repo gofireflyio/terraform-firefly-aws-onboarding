@@ -7,7 +7,7 @@ module "firefly_auth" {
 }
 
 module "firefly_aws_integration" {
-  count                   = !var.bulk_onboarding ? 1 : 0
+  count                   = !var.stackset ? 1 : 0
   source                  = "./modules/firefly_aws_integration"
   firefly_token           = length(module.firefly_auth) > 0 ? module.firefly_auth[0].firefly_token : var.firefly_token
   integration_name        = var.integration_name

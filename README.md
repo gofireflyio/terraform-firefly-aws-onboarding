@@ -80,6 +80,13 @@ module "firefly-read-only" {
 }
 ```
 
+### Debugging - Integrations - response outputs
+```hcl-terraform
+output "integration_responses" {
+  value = module.firefly.integration_responses
+}
+```
+
 ### Upgrading to from v1.y.z to v2.y.z
 Use of `devops-rob/terracurl` provider is removed in favour of official `hashicorp/http`
 Prior to upgrading it is required to remove the deprecated resources from the state eg:

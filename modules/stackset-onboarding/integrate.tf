@@ -9,31 +9,22 @@ data "http" "firefly_aws_integration_request" {
   }
   request_body = jsonencode(
     {
-      "name"= each.value,
-      "roleArn"= "arn:aws:iam::${each.value}:role/firefly-caa-role",
-      "externalId"= var.external-id,
-      "fullScanEnabled"= true,
-      "isProd"= var.is_prod,
-      "isEventDriven" = var.event_driven,
+      "name" = each.value,
+      "roleArn" = "arn:aws:iam::${each.value}:role/firefly-caa-role",
+      "externalId" = var.external-id,
+      "fullScanEnabled" = true,
+      "isProd" = var.production,
+      "isEventDriven" = true,
       "eventDrivenRegions" = var.event_driven_regions,
-      "shouldRunWorkflow" = var.run_workflow,
+      "shouldRunWorkflow" = true,
       "isIacAutoDiscoverDisabled" =  false
     }
   )
   depends_on = [aws_cloudformation_stack_set_instance.triggerOutDeploy]
+  lifecycle {
+    postcondition {
+      condition     = contains([200 ,201, 409], self.status_code)
+      error_message = "Contact Firefly team for more information"
+    }
+  }
 }
-
-
-# Eventdriven Setup: trigger eventbridge rules creation
-# module "run_workflow" {
-#   for_each = toset(local.account_ids)
-#   source               = "../run_workflow"
-#   firefly_token        = var.token
-#   name                 = each.value
-#   firefly_endpoint     = var.endpoint
-#   events_role_arn      = "arn:aws:iam::${each.value}:role/invoke-firefly-remote-event-bus"
-#   event_driven_regions = var.event_driven_regions
-#   depends_on = [
-#     aws_cloudformation_stack_set_instance.triggerOutDeploy
-#   ]
-# }

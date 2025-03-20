@@ -25,17 +25,9 @@ variable "endpoint" {
   type = string
   default = "https://prodapi.firefly.ai/api"
 }
-variable "run_workflow" {
-  type = bool
-  default = true
-}
-variable "is_prod" {
+variable "production" {
   type = bool
   default = false
-}
-variable "event_driven" {
-  type = bool
-  default = true
 }
 variable "event_driven_regions" {
   type        = list(string)

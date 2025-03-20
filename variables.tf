@@ -113,6 +113,12 @@ variable "org_ou_ids" {
   default = [""]
 }
 
+variable "debug" {
+  type = bool
+  description = "Enable debug mode"
+  default = false
+}
+
 variable "stackset" {
   type    = bool
   default = false

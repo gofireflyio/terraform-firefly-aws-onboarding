@@ -8,6 +8,7 @@ module "aws-bulk-integrations" {
   max_concurrent_deploys  = var.max_concurrent_deploys
   failure_tolerance_count = var.failure_tolerance_count
   concurrency_mode        = var.concurrency_mode
+  debug                   = var.debug
 }
 
 output "stackset-name" {

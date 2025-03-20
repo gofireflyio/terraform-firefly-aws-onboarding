@@ -21,6 +21,7 @@ module "firefly_aws_integration" {
   target_event_bus_arn    = var.target_event_bus_arn
   allowed_s3_iac_buckets  = []
   tags                    = merge(var.tags, local.tags)
+  debug                   = var.debug
 }
 
 

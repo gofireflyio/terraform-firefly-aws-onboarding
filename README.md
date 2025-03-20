@@ -82,9 +82,16 @@ module "firefly-read-only" {
 
 ### Debugging - Integrations - response outputs
 ```hcl-terraform
+# add debug = true to the existing module
+module "firefly" {
+  source      = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0"  
+  debug       = true
+}
+
 output "integration_responses" {
   value = module.firefly.integration_responses
 }
+# share the output with Firefly support 
 ```
 
 ### Upgrading to from v1.y.z to v2.y.z

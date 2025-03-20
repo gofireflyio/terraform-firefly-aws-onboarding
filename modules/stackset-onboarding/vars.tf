@@ -21,6 +21,12 @@ variable "cloudformation_template_url" {
   default = "https://infralight-templates-public.s3.us-east-1.amazonaws.com/stackset-cloudformation-template.yml"
 }
 
+variable "debug" {
+  type = bool
+  description = "Enable debug mode"
+  default = false
+}
+
 variable "endpoint" {
   type    = string
   default = "https://prodapi.firefly.ai/api"

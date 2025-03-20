@@ -20,7 +20,7 @@ data "http" "firefly_aws_integration_request" {
   )
   lifecycle {
     postcondition {
-      condition     = contains([200, 201], self.status_code)
+      condition     = var.debug ? !contains([999], self.status_code ) : contains([200, 201], self.status_code)
       error_message = "Contact Firefly Team for more information"
     }
   }

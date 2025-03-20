@@ -59,6 +59,12 @@ variable "resource_prefix" {
   description = "Prefix to add to all resources created"
 }
 
+variable "debug" {
+  type = bool
+  description = "Enable debug mode"
+  default = false
+}
+
 variable "firefly_organization_id" {
   type        = string
   default     = "094724549126"

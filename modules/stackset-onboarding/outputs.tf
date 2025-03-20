@@ -1,4 +1,4 @@
-output "stackset-name" {
+output "stack_set_name" {
   value = aws_cloudformation_stack_set.FireflyStackSet.name
 }
 

@@ -11,6 +11,3 @@ module "aws-bulk-integrations" {
   debug                   = var.debug
 }
 
-output "stackset-name" {
-  value = module.aws-bulk-integrations[0].stackset-name
-}

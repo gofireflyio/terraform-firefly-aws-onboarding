@@ -12,3 +12,7 @@ output "discovered_accounts" {
 output "integration_responses" {
   value = var.stackset ? module.aws-bulk-integrations[0].integration_responses : module.firefly_aws_integration[0].integration_response
 }
+
+output "stack_set_name" {
+  value = var.stackset ? module.aws-bulk-integrations[0].stack_set_name : null
+}

@@ -1,12 +1,17 @@
 variable "firefly_token" {
-  type = string
+  type        = string
   description = "Token returned as result of login request, if provided firefly_access_key and firefly_secret_key are ignored"
-  default = ""
+  default     = ""
 }
 
-variable "name" {
+variable "integration_name" {
   type        = string
   description = "Name of the AWS integration"
+}
+
+variable "target_event_bus_arn" {
+  type        = string
+  description = "The firefly event bus arn to put cloudtrail events in"
 }
 
 variable "firefly_endpoint" {
@@ -14,43 +19,20 @@ variable "firefly_endpoint" {
   description = "The Firefly endpoint to register account management"
 }
 
-variable "is_prod" {
+variable "production" {
   type        = bool
   default     = false
   description = "Is Production?"
 }
 
-variable "full_scan_enabled" {
-  type        = bool
-  default     = true
-  description = "Full scan enabled?"
-}
-
-variable "event_driven"{
-  type = bool
-  default = false 
-  description = "Is event driven infrastructre installed?"
-}
-
-
-variable "run_workflow" {
-  type = bool
-  default = true
-}
-
-variable "role_external_id" {
+variable "external_id" {
   type        = string
   description = "The External Id for the Firefly role generated"
 }
 
-variable "role_name"{
+variable "role_name" {
   type        = string
   description = "The name for the Firefly role generated"
-}
-
-variable "firefly_deny_list_policy_name"{
-  type        = string
-  description = "The name for the Firefly deny policy generated"
 }
 
 
@@ -58,11 +40,6 @@ variable "event_driven_regions" {
   type = list(string)
 }
 
-variable "should_autodiscover_disabled" {
-  type        = bool
-  description = "Whether to create the integration with IaC auto discover (searches for state files in S3 buckets)"
-  default     = false
-}
 
 variable "allowed_s3_iac_buckets" {
   type        = list(string)
@@ -71,19 +48,25 @@ variable "allowed_s3_iac_buckets" {
 }
 
 variable "tags" {
-  type = map
-  default = {}
+  type        = map(any)
+  default     = {}
   description = "Tags to apply to all created AWS resources"
 }
 
 variable "resource_prefix" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Prefix to add to all resources created"
 }
 
+variable "debug" {
+  type = bool
+  description = "Enable debug mode"
+  default = false
+}
+
 variable "firefly_organization_id" {
-  type = string
-  default = "094724549126"
+  type        = string
+  default     = "094724549126"
   description = "AWS account ID to allow assume role from"
 }

@@ -1,7 +1,7 @@
 variable "firefly_token" {
-  type = string
+  type        = string
   description = "Token returned as result of login request, if provided firefly_access_key and firefly_secret_key are ignored"
-  default = ""
+  default     = ""
 }
 
 variable "integration_name" {
@@ -30,7 +30,7 @@ variable "external_id" {
   description = "The External Id for the Firefly role generated"
 }
 
-variable "role_name"{
+variable "role_name" {
   type        = string
   description = "The name for the Firefly role generated"
 }
@@ -48,19 +48,19 @@ variable "allowed_s3_iac_buckets" {
 }
 
 variable "tags" {
-  type = map
-  default = {}
+  type        = map(any)
+  default     = {}
   description = "Tags to apply to all created AWS resources"
 }
 
 variable "resource_prefix" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "Prefix to add to all resources created"
 }
 
 variable "firefly_organization_id" {
-  type = string
-  default = "094724549126"
+  type        = string
+  default     = "094724549126"
   description = "AWS account ID to allow assume role from"
 }

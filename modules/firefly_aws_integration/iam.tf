@@ -178,7 +178,7 @@ resource "aws_iam_policy" "explicit_deny_s3_object_list" {
           "s3:ListBucket"
         ],
         "Effect" : "Deny",
-        "Resource" : local.allowed_list_objects
+        "NotResource" : local.allowed_list_objects
       }
     ]
   })
@@ -212,7 +212,7 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
           "s3:PutBucketNotification"
         ],
         "Effect" : "Allow",
-        "NotResource" : "arn:aws:s3:::*"
+        "Resource" : "arn:aws:s3:::*"
       },
     ]
   })

@@ -212,7 +212,7 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
           "s3:PutBucketNotification"
         ],
         "Effect" : "Allow",
-        "NotResource" : "arn:aws:s3:::*"
+        "Resource" : "arn:aws:s3:::*"
       },
     ]
   })

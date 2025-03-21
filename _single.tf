@@ -19,7 +19,7 @@ module "firefly_aws_integration" {
   event_driven_regions    = var.event_driven_regions
   resource_prefix         = var.resource_prefix
   target_event_bus_arn    = var.target_event_bus_arn
-  allowed_s3_iac_buckets  = []
+  allowed_s3_iac_buckets  = var.allowed_s3_iac_buckets
   tags                    = merge(var.tags, local.tags)
   debug                   = var.debug
 }

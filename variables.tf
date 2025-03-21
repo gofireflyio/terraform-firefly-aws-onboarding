@@ -129,3 +129,8 @@ variable "max_concurrent_deploys" {
   default = 1
 }
 
+variable "allowed_s3_iac_buckets" {
+  type        = list(string)
+  description = "The list of S3 buckets to allow Firefly to read state files from. Omit to allow all buckets."
+  default     = []
+}

@@ -5,19 +5,17 @@ locals {
     "arn:aws:s3:::elasticbeanstalk*/*",
     "arn:aws:s3:::aws-emr-resources*/*"
   ]
-  account_id      = data.aws_caller_identity.current.account_id
+  account_id = data.aws_caller_identity.current.account_id
 
   # Allowed
-  allowed_kms_keys   = length(var.allowed_kms_keys) > 0 ? var.allowed_kms_keys : ["arn:aws:kms:*:${local.account_id}:key/*"]
-  allowed_s3_buckets = length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : ["arn:aws:s3:::*"]
-  allowed_s3_objects    = length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
-  allowed_list_objects = concat(
+  allowed_kms_keys   = length(var.allowed_kms_keys) > 0 ? var.allowed_kms_keys :
+    ["arn:aws:kms:*:${local.account_id}:key/*"]
+  allowed_s3_objects = length(var.allowed_s3_buckets) > 0 ?
+    [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
+  allowed_s3_buckets = concat(
       length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : [],
     local.aws_managed_buckets
   )
-  # Deny
-
-  deny_list_buckets = length(var.allowed_s3_buckets) > 0 ? concat(var.allowed_s3_buckets, local.aws_managed_buckets): local.aws_managed_buckets
 }
 
 resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
@@ -305,7 +303,7 @@ resource "aws_iam_role_policy_attachment" "firefly_additional_fetching_permissio
 }
 
 resource "aws_iam_role_policy_attachment" "firefly_explicit_deny_s3_object_list" {
-  count      = length(var.deny_s3_iac_buckets) > 0 ? 1 : 0
+  count      = length(var.allowed_s3_buckets) > 0 ? 1 : 0
   role       = aws_iam_role.firefly_cross_account_access_role.name
   policy_arn = aws_iam_policy.explicit_deny_s3_object_list[count.index].arn
   depends_on = [aws_iam_role_policy_attachment.firefly_additional_fetching_permission]

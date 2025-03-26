@@ -56,9 +56,9 @@ variable "allowed_kms_keys" {
   default     = []
 }
 
-variable "deny_s3_buckets" {
+variable "allowed_s3_buckets" {
   type        = list(string)
-  description = "The list of S3 buckets to deny Firefly to read state files from."
+  description = "The list of S3 buckets to specifically allow Firefly to read state files from."
   default     = []
 }
 

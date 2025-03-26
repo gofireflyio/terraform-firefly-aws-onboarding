@@ -8,16 +8,16 @@ locals {
   account_id      = data.aws_caller_identity.current.account_id
 
   # Allowed
-  allowed_kms_keys = length(var.allowed_kms_keys) > 0 ? var.allowed_kms_keys : ["arn:aws:kms:*:${local.account_id}:key/*"]
-  allowed_s3_objects = ["arn:aws:s3:::*/*tfstate"]
-  allowed_s3_buckets = ["arn:aws:s3:::*"]
-
-  # Deny
-  deny_list_objects = concat(
-    length(var.deny_s3_iac_buckets) > 0 ? [for value in var.deny_s3_iac_buckets : "arn:aws:s3:::${value}"] : [],
+  allowed_kms_keys   = length(var.allowed_kms_keys) > 0 ? var.allowed_kms_keys : ["arn:aws:kms:*:${local.account_id}:key/*"]
+  allowed_s3_buckets = length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : ["arn:aws:s3:::*"]
+  allowed_s3_objects    = length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
+  allowed_list_objects = concat(
+      length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : [],
     local.aws_managed_buckets
   )
-  deny_list_buckets = length(var.deny_s3_iac_buckets) > 0 ? concat(var.deny_s3_iac_buckets, local.aws_managed_buckets): local.aws_managed_buckets
+  # Deny
+
+  deny_list_buckets = length(var.allowed_s3_buckets) > 0 ? concat(var.allowed_s3_buckets, local.aws_managed_buckets): local.aws_managed_buckets
 }
 
 resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
@@ -170,28 +170,20 @@ resource "aws_iam_policy" "firefly_readonly_policy_deny_list" {
 }
 
 resource "aws_iam_policy" "explicit_deny_s3_object_list" {
-  count       = length(var.deny_s3_iac_buckets) > 0 ? 1 : 0
+  count       = length(var.allowed_s3_buckets) > 0 ? 1 : 0
   name        = "${var.resource_prefix}ExplicitDenyS3ObjectList"
   path        = "/"
-  description = "Deny list for S3 objects"
+  description = "Deny list for S3 buckets"
 
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
       {
         "Action" : [
-          "s3:ListBucket",
-          "s3:PutBucketNotification"
+          "s3:ListBucket"
         ],
         "Effect" : "Deny",
-        "Resource" : local.deny_list_buckets
-      },
-      {
-        "Action" : [
-          "s3:GetObject"
-        ],
-        "Effect" : "Deny",
-        "Resource" : local.deny_list_objects
+        "NotResource" : local.allowed_s3_buckets
       }
     ]
   })
@@ -226,7 +218,7 @@ resource "aws_iam_policy" "firefly_s3_specific_permission" {
         ],
         "Effect" : "Allow",
         "Resource" : local.allowed_s3_buckets
-      },
+      }
     ]
   })
   tags = var.tags

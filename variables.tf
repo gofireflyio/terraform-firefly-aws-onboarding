@@ -50,6 +50,18 @@ variable "firefly_role_name" {
   type    = string
 }
 
+variable "allowed_kms_keys" {
+  type        = list(string)
+  description = "The list of KMS keys to allow Firefly to decrypt. Omit to allow all keys."
+  default     = []
+}
+
+variable "allowed_s3_buckets" {
+  type        = list(string)
+  description = "The list of S3 buckets to specifically allow Firefly to read state files from."
+  default     = []
+}
+
 variable "event_driven_regions" {
   type        = list(string)
   description = "The list of regions to install firefly event driven in"

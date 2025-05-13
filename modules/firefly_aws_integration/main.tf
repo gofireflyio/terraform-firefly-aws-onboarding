@@ -15,7 +15,8 @@ data "http" "firefly_aws_integration_request" {
       "isEventDriven"             = true,
       "eventDrivenRegions"        = var.event_driven_regions,
       "shouldRunWorkflow"         = true,
-      "isIacAutoDiscoverDisabled" = false
+      "isIacAutoDiscoverDisabled" = false,
+      "customerPrefix"            = var.resource_prefix
     }
   )
   lifecycle {
@@ -25,4 +26,3 @@ data "http" "firefly_aws_integration_request" {
     }
   }
 }
-

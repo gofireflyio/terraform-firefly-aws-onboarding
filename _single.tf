@@ -18,6 +18,7 @@ module "firefly_aws_integration" {
   role_name               = local.firefly_role_name
   event_driven_regions    = var.event_driven_regions
   resource_prefix         = var.resource_prefix
+  rules_prefix            = var.rules_prefix
   target_event_bus_arn    = var.target_event_bus_arn
   allowed_s3_buckets      = var.allowed_s3_buckets
   allowed_kms_keys        = var.allowed_kms_keys

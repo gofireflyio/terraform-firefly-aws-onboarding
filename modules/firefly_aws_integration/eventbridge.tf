@@ -4,4 +4,5 @@ module "firefly_eventbridge_permissions" {
   target_event_bus_arn = var.target_event_bus_arn
   tags                 = var.tags
   resource_prefix      = var.resource_prefix
+  rules_prefix         = var.rules_prefix
 }

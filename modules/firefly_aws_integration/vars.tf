@@ -65,6 +65,12 @@ variable "resource_prefix" {
   description = "Prefix to add to all resources created"
 }
 
+variable "rules_prefix" {
+  type        = string
+  default     = ""
+  description = "Prefix to add to all eventbridge rules created"
+}
+
 variable "debug" {
   type = bool
   description = "Enable debug mode"

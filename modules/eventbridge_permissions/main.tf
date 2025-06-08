@@ -22,7 +22,7 @@ resource "aws_iam_policy" "firefly_eventbridge_permission" {
           "events:TagResource"
         ],
         "Effect" : "Allow",
-        "Resource" : "arn:aws:events:*:${data.aws_caller_identity.current.account_id}:rule/firefly-events-*"
+        "Resource" : "arn:aws:events:*:${data.aws_caller_identity.current.account_id}:rule/${var.rules_prefix}firefly-events-*"
       },
       {
         "Effect" : "Allow",

@@ -14,6 +14,12 @@ variable "resource_prefix" {
   description = "Prefix to add to all resources created"
 }
 
+variable "rules_prefix" {
+  type        = string
+  default     = ""
+  description = "Prefix to add to all eventbridge rules created"
+}
+
 variable "target_event_bus_arn" {
   type = string
 }

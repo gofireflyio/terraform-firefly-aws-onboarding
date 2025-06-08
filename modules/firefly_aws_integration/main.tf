@@ -1,3 +1,12 @@
+resource "time_sleep" "wait_10_seconds" {
+  depends_on = [
+    aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_permission,
+    aws_iam_role.firefly_cross_account_access_role
+  ]
+
+  create_duration = "10s"
+}
+
 data "http" "firefly_aws_integration_request" {
   url    = "${var.firefly_endpoint}/integrations/aws/"
   method = "POST"
@@ -24,5 +33,9 @@ data "http" "firefly_aws_integration_request" {
       error_message = "Contact Firefly Team for more information"
     }
   }
+  depends_on = [
+    aws_iam_policy.firefly_readonly_policy_deny_list, aws_iam_policy.firefly_s3_specific_permission,
+    aws_iam_role.firefly_cross_account_access_role, time_sleep.wait_10_seconds
+  ]
 }
 

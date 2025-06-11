@@ -11,7 +11,7 @@ locals {
   allowed_kms_keys   = length(var.allowed_kms_keys) > 0 ? var.allowed_kms_keys : ["arn:aws:kms:*:${local.account_id}:key/*"]
   allowed_s3_objects = length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}/*tfstate"] : ["arn:aws:s3:::*/*tfstate"]
   allowed_s3_buckets = concat(
-      length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : [],
+    length(var.allowed_s3_buckets) > 0 ? [for value in var.allowed_s3_buckets : "arn:aws:s3:::${value}"] : [],
     local.aws_managed_buckets
   )
 }
@@ -268,7 +268,7 @@ resource "aws_iam_role" "firefly_cross_account_access_role" {
       }
     ]
   })
-  tags = var.tags
+  tags = merge(var.tags, var.role_tags)
 }
 
 resource "aws_iam_role_policy_attachment" "firefly_readonly_policy_deny_list" {

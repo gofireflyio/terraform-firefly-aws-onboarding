@@ -114,6 +114,12 @@ variable "tags" {
   description = "Tags to apply to all created AWS resources"
 }
 
+variable "role_tags" {
+  type        = map(any)
+  default     = {}
+  description = "Tags to apply to created AWS roles"
+}
+
 variable "resource_prefix" {
   type        = string
   default     = ""
@@ -132,9 +138,9 @@ variable "org_ou_ids" {
 }
 
 variable "debug" {
-  type = bool
+  type        = bool
   description = "Enable debug mode"
-  default = false
+  default     = false
 }
 
 variable "stackset" {

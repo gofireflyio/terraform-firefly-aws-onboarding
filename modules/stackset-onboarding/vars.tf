@@ -22,9 +22,9 @@ variable "cloudformation_template_url" {
 }
 
 variable "debug" {
-  type = bool
+  type        = bool
   description = "Enable debug mode"
-  default = false
+  default     = false
 }
 
 variable "endpoint" {

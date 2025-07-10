@@ -23,6 +23,8 @@ data "http" "firefly_aws_integration_request" {
       "isProd"                    = var.production,
       "isEventDriven"             = true,
       "eventDrivenRegions"        = var.event_driven_regions,
+      "rulesPrefix"               = var.rules_prefix,
+      "customerPrefix"            = var.rules_prefix,
       "shouldRunWorkflow"         = true,
       "isIacAutoDiscoverDisabled" = false
     }

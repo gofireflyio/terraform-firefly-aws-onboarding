@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.15.1](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.15.0...v2.15.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* improve IAM role tag configuration ([92f7797](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/92f77979970929bd832c61c4cc3e32713fecdd10))
+
 ## [2.15.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.14.0...v2.15.0) (2025-06-08)
 
 

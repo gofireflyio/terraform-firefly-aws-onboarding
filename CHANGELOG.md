@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.16.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.15.1...v2.16.0) (2025-07-15)
+
+
+### Features
+
+* v2.16.0 ([cf60642](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/commit/cf60642ad514b8bf4191c80163b30f9709474527))
+
 ### [2.15.1](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.15.0...v2.15.1) (2025-07-15)
 
 

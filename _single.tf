@@ -23,6 +23,7 @@ module "firefly_aws_integration" {
   allowed_s3_buckets      = var.allowed_s3_buckets
   allowed_kms_keys        = var.allowed_kms_keys
   tags                    = merge(var.tags, local.tags)
+  role_tags               = var.role_tags
   debug                   = var.debug
 }
 

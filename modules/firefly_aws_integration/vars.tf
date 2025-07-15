@@ -35,11 +35,9 @@ variable "role_name" {
   description = "The name for the Firefly role generated"
 }
 
-
 variable "event_driven_regions" {
   type = list(string)
 }
-
 
 variable "allowed_s3_buckets" {
   type        = list(string)
@@ -59,6 +57,12 @@ variable "tags" {
   description = "Tags to apply to all created AWS resources"
 }
 
+variable "role_tags" {
+  type        = map(any)
+  default     = {}
+  description = "Tags to apply to created AWS roles"
+}
+
 variable "resource_prefix" {
   type        = string
   default     = ""
@@ -72,9 +76,9 @@ variable "rules_prefix" {
 }
 
 variable "debug" {
-  type = bool
+  type        = bool
   description = "Enable debug mode"
-  default = false
+  default     = false
 }
 
 variable "firefly_organization_id" {

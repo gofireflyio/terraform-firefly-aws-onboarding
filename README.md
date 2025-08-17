@@ -20,13 +20,13 @@ curl --help
 
 ```hcl-terraform
 module "firefly-auth" {
-  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0/modules/firefly_auth"
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.16.0/modules/firefly_auth"
   firefly_access_key    = "YOUR_ACCESS_KEY"
   firefly_secret_key    = "YOUR_SECRET_KEY"
 }
 
 module "firefly" {
-  source      = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0"
+  source      = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.16.0"
   firefly_token = module.firefly-auth.firefly_token
   production  = true
   external_id = "YOUR_EXTERNAL_ID"
@@ -67,13 +67,13 @@ resource "aws_cloudformation_stack_set_instance" "ou-id-0" {
 
 ```hcl-terraform
 module "firefly_auth" {
-  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0/modules/firefly_auth"
+  source = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.16.0/modules/firefly_auth"
   firefly_access_key    = "YOUR_ACCESS_KEY"
   firefly_secret_key    = "YOUR_SECRET_KEY"
 }
 
 module "firefly-read-only" {
-  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0"
+  source                = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.16.0"
   firefly_token         = module.firefly_auth.firefly_token
   integration_name      = "INTEGRATION_NAME"
   external_id           = "YOUR_EXTERNAL_ID"
@@ -88,7 +88,7 @@ module "firefly-read-only" {
 ```hcl-terraform
 # add debug = true to the existing module
 module "firefly" {
-  source      = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.14.0"  
+  source      = "github.com/gofireflyio/terraform-firefly-aws-onboarding?ref=v2.16.0"  
   debug       = true
 }
 

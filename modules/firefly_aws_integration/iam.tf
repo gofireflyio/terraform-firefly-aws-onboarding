@@ -243,6 +243,14 @@ resource "aws_iam_policy" "firefly_additional_fetching_permission" {
         "Resource" : [
           "*"
         ]
+      },
+      {
+        "Effect" : "Allow",
+        "Action" : [
+          "ebs:ListSnapshotBlocks",
+          "ebs:ListChangedBlocks"
+        ],
+        "Resource" : "arn:aws:ec2:*:${local.account_id}:snapshot/*"
       }
     ]
   })

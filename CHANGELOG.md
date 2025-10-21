@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.17.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.16.0...v2.17.0) (2025-10-21)
+
+
+### Features
+
+* Remove upper limit on AWS provider version constraint
+* Bump HTTP provider version to >= 3.4.5
+
 ## [2.16.0](https://github.com/gofireflyio/terraform-firefly-aws-onboarding/compare/v2.15.1...v2.16.0) (2025-07-15)
 
 
